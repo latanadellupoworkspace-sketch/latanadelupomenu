@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Gestione Menu · La Tana del Lupo</title>
+  <meta name="theme-color" content="#1a0905">
+  <link rel="icon" href="/img/icon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <!-- LOGIN -->
+  <section id="login" class="login" hidden>
+    <form id="loginForm" class="login-card">
+      <img src="/img/hero.webp" alt="" class="login-logo">
+      <h1>La Tana del Lupo</h1>
+      <p class="sub">Area riservata</p>
+      <label>Email<input type="email" id="email" required autocomplete="username"></label>
+      <label>Password<input type="password" id="password" required autocomplete="current-password"></label>
+      <button class="btn gold" type="submit">Entra</button>
+      <p class="err" id="loginErr"></p>
+    </form>
+  </section>
+
+  <!-- APP -->
+  <section id="app" hidden>
+    <header class="top">
+      <h1>🐺 Gestione Menu</h1>
+      <div class="top-actions">
+        <a href="/" target="_blank" class="btn ghost sm">Vedi menu ↗</a>
+        <button id="logout" class="btn ghost sm">Esci</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="products">Prodotti</button>
+      <button class="tab" data-tab="categories">Categorie</button>
+      <button class="tab" data-tab="notes">Note</button>
+    </nav>
+
+    <div id="seedBanner" class="banner" hidden>
+      <p><strong>Il database è vuoto.</strong> Vuoi importare il menu attuale (14 categorie, 107 prodotti con foto)?</p>
+      <button id="seedBtn" class="btn gold">Importa menu iniziale</button>
+    </div>
+
+    <main class="panel" id="tab-products">
+      <div class="toolbar">
+        <input type="search" id="pSearch" placeholder="Cerca prodotto…">
+        <select id="pFilter"><option value="">Tutte le categorie</option></select>
+        <button class="btn gold" id="addProduct">+ Prodotto</button>
+      </div>
+      <div id="productList"></div>
+    </main>
+
+    <main class="panel" id="tab-categories" hidden>
+      <div class="toolbar"><button class="btn gold" id="addCategory">+ Categoria</button></div>
+      <div id="categoryList"></div>
+    </main>
+
+    <main class="panel" id="tab-notes" hidden>
+      <p class="hint">Note mostrate in fondo al menu (una per riga).</p>
+      <textarea id="notesText" rows="8"></textarea>
+      <button class="btn gold" id="saveNotes">Salva note</button>
+    </main>
+  </section>
+
+  <!-- MODALE PRODOTTO -->
+  <dialog id="pDialog">
+    <form id="pForm" method="dialog">
+      <h2 id="pTitle">Prodotto</h2>
+      <div class="photo">
+        <div class="photo-prev" id="photoPrev"><span>Nessuna foto</span></div>
+        <div class="photo-actions">
+          <label class="btn ghost sm">📷 Carica foto<input type="file" id="photoInput" accept="image/*" hidden></label>
+          <button type="button" class="btn ghost sm" id="photoRemove">Rimuovi</button>
+        </div>
+      </div>
+      <label>Nome<input id="pName" required></label>
+      <label>Descrizione<textarea id="pDesc" rows="3"></textarea></label>
+      <div class="row">
+        <label>Prezzo (€)<input id="pPrice" type="number" step="0.01" min="0" inputmode="decimal" required></label>
+        <label>Ordine<input id="pOrder" type="number" step="1"></label>
+      </div>
+      <label>Categoria<select id="pCat" required></select></label>
+      <div class="row checks">
+        <label class="check"><input type="checkbox" id="pAvail"> Disponibile</label>
+        <label class="check"><input type="checkbox" id="pVisible"> Visibile</label>
+      </div>
+      <div class="dlg-actions">
+        <button type="button" class="btn danger" id="pDelete">Elimina</button>
+        <span></span>
+        <button type="button" class="btn ghost" data-cancel>Annulla</button>
+        <button type="submit" class="btn gold" id="pSave">Salva</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- MODALE CATEGORIA -->
+  <dialog id="cDialog">
+    <form id="cForm" method="dialog">
+      <h2 id="cTitle">Categoria</h2>
+      <div class="row">
+        <label class="emoji-l">Emoji<input id="cEmoji" maxlength="4"></label>
+        <label>Nome<input id="cName" required></label>
+      </div>
+      <label>Descrizione (opzionale)<textarea id="cDesc" rows="2"></textarea></label>
+      <div class="row">
+        <label>Ordine<input id="cOrder" type="number" step="1"></label>
+        <label class="check"><input type="checkbox" id="cVisible"> Visibile</label>
+      </div>
+      <div class="dlg-actions">
+        <button type="button" class="btn danger" id="cDelete">Elimina</button>
+        <span></span>
+        <button type="button" class="btn ghost" data-cancel>Annulla</button>
+        <button type="submit" class="btn gold">Salva</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

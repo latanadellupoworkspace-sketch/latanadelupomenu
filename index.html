@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>La Tana del Lupo · Menu</title>
+  <meta name="description" content="Menu digitale di La Tana del Lupo – Pub / Birreria a Vairano Scalo. Smash burger, panini gourmet, birre selezionate.">
+  <meta name="theme-color" content="#1a0905">
+  <meta property="og:title" content="La Tana del Lupo · Menu">
+  <meta property="og:description" content="Smash burger, panini gourmet e birre selezionate.">
+  <meta property="og:image" content="/img/og.jpg">
+  <link rel="icon" href="/img/icon-512.png">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/menu.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero-bg" style="background-image:url('/img/hero.webp')"></div>
+    <div class="hero-shade"></div>
+    <div class="lantern l1" aria-hidden="true"></div>
+    <div class="lantern l2" aria-hidden="true"></div>
+    <div class="embers" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <p class="hero-kicker">Pub · Birreria · Vairano Scalo</p>
+      <h1 class="hero-title" aria-label="La Tana del Lupo">
+        <span class="arc">
+          <span>L</span><span>a</span><span class="gap"></span><span>T</span><span>a</span><span>n</span><span>a</span>
+        </span>
+        <span class="arc arc2">
+          <span>d</span><span>e</span><span>l</span><span class="gap"></span><span>L</span><span>u</span><span>p</span><span>o</span>
+        </span>
+      </h1>
+      <div class="hero-badge">
+        <img src="/img/hero.webp" alt="Il lupo della Tana" width="447" height="447">
+      </div>
+      <div class="hero-tags">
+        <span>🍔 Smash Burger</span><span>🍺 Birre Selezionate</span><span>🌮 Panini Gourmet</span>
+      </div>
+      <a href="#menu" class="hero-cta">Sfoglia il menu <span>↓</span></a>
+    </div>
+  </header>
+
+  <nav class="catbar" id="catbar" aria-label="Categorie">
+    <button class="search-btn" id="searchBtn" aria-label="Cerca">
+      <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+    <div class="chips" id="chips"></div>
+  </nav>
+
+  <div class="searchbox" id="searchbox" hidden>
+    <input id="q" type="search" placeholder="Cerca nel menu… (es. bacon, IPA)" autocomplete="off">
+  </div>
+
+  <main id="menu" class="menu">
+    <div class="loader" id="loader"><div class="paw"></div><p>Il lupo sta preparando il menu…</p></div>
+  </main>
+
+  <footer class="foot">
+    <div class="notes" id="notes"></div>
+    <p class="about">La Tana del Lupo è il luogo ideale per chi ama hamburger premium, smash burger, birre di qualità e serate in compagnia.</p>
+    <p class="allergens">Per allergie e intolleranze chiedi al personale.</p>
+    <p class="copy">© <span id="yr"></span> La Tana del Lupo</p>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-back" data-close></div>
+    <article class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-x" data-close aria-label="Chiudi">✕</button>
+      <div class="modal-img" id="mImg"></div>
+      <div class="modal-body">
+        <h3 id="mName"></h3>
+        <p id="mDesc"></p>
+        <div class="modal-price" id="mPrice"></div>
+      </div>
+    </article>
+  </div>
+
+  <script type="module" src="/js/menu.js"></script>
+</body>
+</html>

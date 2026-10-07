@@ -1,0 +1,1181 @@
+{
+ "categories": [
+  {
+   "id": "antipasti-e-fritti",
+   "name": "Antipasti e Fritti",
+   "emoji": "🍟",
+   "description": "",
+   "order": 0
+  },
+  {
+   "id": "panini",
+   "name": "Panini",
+   "emoji": "🍔",
+   "description": "Tutti i panini sono serviti con porzione di patatine fritte. I panini possono essere modificati.",
+   "order": 1
+  },
+  {
+   "id": "panini-new",
+   "name": "Panini New",
+   "emoji": "🔥",
+   "description": "Serviti con porzione di patatine.",
+   "order": 2
+  },
+  {
+   "id": "smash-burgers",
+   "name": "Smash Burgers",
+   "emoji": "🥩",
+   "description": "Serviti con porzione di patatine.",
+   "order": 3
+  },
+  {
+   "id": "american-hot-dog",
+   "name": "American Hot Dog",
+   "emoji": "🌭",
+   "description": "Serviti con porzione di patatine.",
+   "order": 4
+  },
+  {
+   "id": "secondi",
+   "name": "Secondi",
+   "emoji": "🍖",
+   "description": "",
+   "order": 5
+  },
+  {
+   "id": "contorni",
+   "name": "Contorni",
+   "emoji": "🥗",
+   "description": "",
+   "order": 6
+  },
+  {
+   "id": "dolci",
+   "name": "Dolci",
+   "emoji": "🍰",
+   "description": "",
+   "order": 7
+  },
+  {
+   "id": "bibite",
+   "name": "Bibite",
+   "emoji": "🥤",
+   "description": "",
+   "order": 8
+  },
+  {
+   "id": "birre-alla-spina",
+   "name": "Birre alla Spina",
+   "emoji": "🍺",
+   "description": "",
+   "order": 9
+  },
+  {
+   "id": "birre-in-bottiglia-e-lattina",
+   "name": "Birre in Bottiglia e Lattina",
+   "emoji": "🍻",
+   "description": "",
+   "order": 10
+  },
+  {
+   "id": "vini",
+   "name": "Vini",
+   "emoji": "🍷",
+   "description": "",
+   "order": 11
+  },
+  {
+   "id": "prosecchi",
+   "name": "Prosecchi",
+   "emoji": "🥂",
+   "description": "",
+   "order": 12
+  },
+  {
+   "id": "distillati",
+   "name": "Distillati",
+   "emoji": "🥃",
+   "description": "",
+   "order": 13
+  }
+ ],
+ "products": [
+  {
+   "id": "antipasti-e-fritti-01",
+   "categoryId": "antipasti-e-fritti",
+   "name": "TAGLIERE DI SALUMI E FORMAGGI , CON MIELE ( per 2 persone)",
+   "description": "Tagliere di salumi e formaggi con miele",
+   "price": 15.0,
+   "image": "",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-02",
+   "categoryId": "antipasti-e-fritti",
+   "name": "CROCCHE' DI PATATE MIGNON 4 PZ",
+   "description": "* crocche' di patate con provola ,sale e pepe",
+   "price": 3.5,
+   "image": "/img/prodotti/antipasti-e-fritti-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-03",
+   "categoryId": "antipasti-e-fritti",
+   "name": "ARANCINO MIGNON (4 PZ)",
+   "description": "Riso al pomodoro, brasato di carne macinata suina, piselli dolci, cipolla di tropea, carote, sedano e provola.",
+   "price": 3.0,
+   "image": "/img/prodotti/antipasti-e-fritti-03.webp",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-04",
+   "categoryId": "antipasti-e-fritti",
+   "name": "FRITTATINE DI PASTA 4 PZ (mignon)",
+   "description": "Pasta bucatini, besciamella artigianale, brasato di carne macinata , piselli dolci, cipolla di tropea, carote, provola affumicata.",
+   "price": 3.0,
+   "image": "/img/prodotti/antipasti-e-fritti-04.webp",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-05",
+   "categoryId": "antipasti-e-fritti",
+   "name": "CHICKEN NUGGETS CON SALSA WANTEDWESTERN BURGER (5 PEZZI)",
+   "description": "bocconcini di pollo fritti e serviti con salsa WANTED WESTERN BURGER , (SALSA A BASE DI MAIONESE CON POMODORO E NOTA AFFUMICATA )",
+   "price": 5.4,
+   "image": "/img/prodotti/antipasti-e-fritti-05.webp",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-06",
+   "categoryId": "antipasti-e-fritti",
+   "name": "ANELLI DI CIPOLLA , SERVITI CON SALASA BARBECUE (8 PEZZI)",
+   "description": "* anelli di cipolla con pastella alla birra , accompagnati da salsa barbecue",
+   "price": 5.4,
+   "image": "/img/prodotti/antipasti-e-fritti-06.webp",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-07",
+   "categoryId": "antipasti-e-fritti",
+   "name": "PATATINE DIPPERS",
+   "description": "* patatine con buccia",
+   "price": 4.0,
+   "image": "/img/prodotti/antipasti-e-fritti-07.webp",
+   "order": 6,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-08",
+   "categoryId": "antipasti-e-fritti",
+   "name": "PATATINE STICK",
+   "description": "* patatine a stik",
+   "price": 3.0,
+   "image": "/img/prodotti/antipasti-e-fritti-08.webp",
+   "order": 7,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-09",
+   "categoryId": "antipasti-e-fritti",
+   "name": "PATATE ROSSE",
+   "description": "patate americane rosse",
+   "price": 5.5,
+   "image": "/img/prodotti/antipasti-e-fritti-09.webp",
+   "order": 8,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-10",
+   "categoryId": "antipasti-e-fritti",
+   "name": "PATATE DIPPERS CON UNA NUVOLA DI CHEDDAR FUSO E BACON",
+   "description": "PATATE BACON E CHEDDAR FUSO",
+   "price": 8.0,
+   "image": "/img/prodotti/antipasti-e-fritti-10.webp",
+   "order": 9,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-11",
+   "categoryId": "antipasti-e-fritti",
+   "name": "TRIS DI BRUSCHETTE FANTASIA DELLO CHEF",
+   "description": "",
+   "price": 5.0,
+   "image": "/img/prodotti/antipasti-e-fritti-11.webp",
+   "order": 10,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-12",
+   "categoryId": "antipasti-e-fritti",
+   "name": "TRIS DI BRUSCHETTE CON POMODORINI",
+   "description": "Bruschette con pomodorini",
+   "price": 3.5,
+   "image": "/img/prodotti/antipasti-e-fritti-12.webp",
+   "order": 11,
+   "available": true
+  },
+  {
+   "id": "antipasti-e-fritti-13",
+   "categoryId": "antipasti-e-fritti",
+   "name": "ASIAN WINGS (ALETTE DI POLLO FRITTE)CON GLASSA DI SALSA TERIYAKI E SESAMO WASABI",
+   "description": "ALETTE DI POLLO FRITTE CON GLASSATURA DI SALSA TERIAKI E SESAMO WASABI A",
+   "price": 10.0,
+   "image": "/img/prodotti/antipasti-e-fritti-13.webp",
+   "order": 12,
+   "available": true
+  },
+  {
+   "id": "panini-01",
+   "categoryId": "panini",
+   "name": "LUPO BRUNO",
+   "description": "Doppio hamburger di Scottona 200gr, bacon X2, cheddar X2 e salsa barbecue ,",
+   "price": 13.0,
+   "image": "/img/prodotti/panini-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "panini-02",
+   "categoryId": "panini",
+   "name": "LUPO IBERICO",
+   "description": "Hamburgher di Scottona 200gr, provola del Matese, bacon, 2 anelli di cipolla pastellati alla birra e rucola.",
+   "price": 12.0,
+   "image": "/img/prodotti/panini-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "panini-03",
+   "categoryId": "panini",
+   "name": "LUPO BIANCO",
+   "description": "Hamburgher di Scottona 200gr, parmigiana, prosciutto cotto e pioggia di parmigiano.",
+   "price": 10.5,
+   "image": "/img/prodotti/panini-03.webp",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "panini-04",
+   "categoryId": "panini",
+   "name": "LUPO DELL'IRPINIA",
+   "description": "Doppio hamburger di Scottona 200gr smeshiato, rucola, scaglie di parmigiano , con tartufo oppure funghi porcini",
+   "price": 12.0,
+   "image": "/img/prodotti/panini-04.webp",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "panini-05",
+   "categoryId": "panini",
+   "name": "LUPO DELLO YUKON",
+   "description": "Pulled pork, bacon croccante, insalata e salsa barbecue.",
+   "price": 11.0,
+   "image": "/img/prodotti/panini-05.webp",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "panini-06",
+   "categoryId": "panini",
+   "name": "LUPO GRIGIO 2",
+   "description": "* cotoletta di pollo ( nostra produzione),cheddar, pomodoro, bacon,insalata, e cipolle croccanti di tropea.",
+   "price": 10.0,
+   "image": "/img/prodotti/panini-06.webp",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "panini-07",
+   "categoryId": "panini",
+   "name": "LUPO ARTICO",
+   "description": "*Polpo grigliato, crema di patate, stracciata di bufala DOP, CREMA DI POMODORO secco e pesto di basilico.",
+   "price": 15.0,
+   "image": "/img/prodotti/panini-07.webp",
+   "order": 6,
+   "available": true
+  },
+  {
+   "id": "panini-08",
+   "categoryId": "panini",
+   "name": "LUPO TUNDRA",
+   "description": "Hamburgher di Scottona 200gr, capocollo croccante, pesto di basilico, stacciata di bufala e rucola.",
+   "price": 12.0,
+   "image": "/img/prodotti/panini-08.webp",
+   "order": 7,
+   "available": true
+  },
+  {
+   "id": "panini-09",
+   "categoryId": "panini",
+   "name": "LUPO DELL'ISOLA DI BAFFIN (RIVISITATO)",
+   "description": "Hamburgher di Scottona 200gr, patate al forno, provola panata e zucchine grigliate",
+   "price": 12.0,
+   "image": "/img/prodotti/panini-09.webp",
+   "order": 8,
+   "available": true
+  },
+  {
+   "id": "panini-10",
+   "categoryId": "panini",
+   "name": "LUPO NERONE",
+   "description": "Doppio hamburger di scottona, mortadella piastrata, pesto al pistacchio e stacciata di bufala. (Chef Nerone)",
+   "price": 15.0,
+   "image": "/img/prodotti/panini-10.webp",
+   "order": 9,
+   "available": true
+  },
+  {
+   "id": "panini-11",
+   "categoryId": "panini",
+   "name": "LUPO INNAMORATO",
+   "description": "Hamburger Scottona 200 gr ,Cipolla Caramellata,(Nobili Radici) Stracciata di bufala, Bacon",
+   "price": 11.5,
+   "image": "/img/prodotti/panini-11.webp",
+   "order": 10,
+   "available": true
+  },
+  {
+   "id": "panini-12",
+   "categoryId": "panini",
+   "name": "SALSA CHEDDAR IN CIOTOLA",
+   "description": "una nuvola di salsa Cheddar",
+   "price": 4.0,
+   "image": "/img/prodotti/panini-12.webp",
+   "order": 11,
+   "available": true
+  },
+  {
+   "id": "panini-new-01",
+   "categoryId": "panini-new",
+   "name": "LEMON LUPO",
+   "description": "cotoletta di pollo (nostra produzione),rucola, pomodoro e maionese al profumo di limone della Costiera Amalfitana",
+   "price": 10.35,
+   "image": "/img/prodotti/panini-new-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "panini-new-02",
+   "categoryId": "panini-new",
+   "name": "LUPO ADDAVER”",
+   "description": "HAMBURGHER DI SCOTTONA, DOPPIO CHEDDAR, NACHOS JALAPENO (PEPERONCINO PICCANTE VERDE MESSICANO) 2 CROCCHE' , MAIONESE E BACON",
+   "price": 12.5,
+   "image": "/img/prodotti/panini-new-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "panini-new-03",
+   "categoryId": "panini-new",
+   "name": "LUPO AVVELENATO",
+   "description": "HAMBUERGHER DI SCOTTONA 200 GR , MELANZANE GRIGLIATE , PROVOLA, BACON, GHERIGLI DI NOCI, SALSA BRAVA",
+   "price": 11.9,
+   "image": "/img/prodotti/panini-new-03.webp",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "panini-new-04",
+   "categoryId": "panini-new",
+   "name": "LUPO CLEMENTINO",
+   "description": "Hamburgher di scottona 200gr , crema di melanzane(NOBILI RADICI)bacon croccante e provola del matese",
+   "price": 10.0,
+   "image": "/img/prodotti/panini-new-04.webp",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "panini-new-05",
+   "categoryId": "panini-new",
+   "name": "LUPO GENOVESE",
+   "description": "Genovese ( carne di manzo, cipolle , sedano, carota, il tutto cotta a bassa temperatura per ore e iore) priovola affumicata del matese e becon",
+   "price": 12.0,
+   "image": "/img/prodotti/panini-new-05.webp",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "smash-burgers-01",
+   "categoryId": "smash-burgers",
+   "name": "WOLF SMOKE SMASH",
+   "description": "bun americano , burger smash,cheddar ,bacon, salsa pepper smoke(salsa a base di peperoni , affumicata)",
+   "price": 7.0,
+   "image": "/img/prodotti/smash-burgers-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "smash-burgers-02",
+   "categoryId": "smash-burgers",
+   "name": "WOLF CHEESE BURGER SMASH",
+   "description": "bun americano,burger smash,cheddar,bacon,salsa alabama (salsa a base di maionese e aceto di mele ),cetriolini a fette",
+   "price": 7.0,
+   "image": "/img/prodotti/smash-burgers-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "smash-burgers-03",
+   "categoryId": "smash-burgers",
+   "name": "WOLF NY SMASH",
+   "description": "bun americano,burger smash, cheddar,bacon,insalata, pomodoro, maionese top food, cipolla croccante",
+   "price": 7.0,
+   "image": "/img/prodotti/smash-burgers-03.webp",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "smash-burgers-04",
+   "categoryId": "smash-burgers",
+   "name": "WOLF WESTERN SMASH BURGER",
+   "description": "Bun Americano, DOPPIO SMASH ,salsa western (TANA DEL LUPO), pomodoro, insalata",
+   "price": 10.0,
+   "image": "/img/prodotti/smash-burgers-04.webp",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "smash-burgers-05",
+   "categoryId": "smash-burgers",
+   "name": "WOLF AMRICAN SMASH BURGER",
+   "description": "bun americano DOPPIO SMASH ,cheddar, bacon e insalata",
+   "price": 10.0,
+   "image": "/img/prodotti/smash-burgers-05.webp",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "american-hot-dog-01",
+   "categoryId": "american-hot-dog",
+   "name": "AMERICAN HOT DOG",
+   "description": "PANINO , WRUSTEL DI SUINO, KETCHUP , MAIONESE , SERVITI CON PATATINE FRITTE",
+   "price": 5.0,
+   "image": "/img/prodotti/american-hot-dog-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "american-hot-dog-02",
+   "categoryId": "american-hot-dog",
+   "name": "AMERICAN HOT DOG CROCCANTE",
+   "description": "panino, wrustel di suino maionese e cipolla croccante, con porzione di patatine",
+   "price": 5.5,
+   "image": "/img/prodotti/american-hot-dog-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "secondi-01",
+   "categoryId": "secondi",
+   "name": "COTOLETTA DI POLLO (NOSTRA PRODUZIONE ) CON CONTORNO DI VERDURE",
+   "description": "COTOLETTA DI POLLO , VERDURE",
+   "price": 7.5,
+   "image": "/img/prodotti/secondi-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "secondi-02",
+   "categoryId": "secondi",
+   "name": "HAMBURGER 200 GR DI SCOTTONA A PIATTO CON CONTORNO DI VERDURE",
+   "description": "HAMBURGER DI SCOTTONA , VERDURE",
+   "price": 7.5,
+   "image": "/img/prodotti/secondi-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "secondi-03",
+   "categoryId": "secondi",
+   "name": "ALETTE DI POLLO (leggermente piccanti)",
+   "description": "Alette di pollo con succo dilimone,farina di frumento,peperoncino,spezie,paprika,,",
+   "price": 10.0,
+   "image": "/img/prodotti/secondi-03.webp",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "secondi-04",
+   "categoryId": "secondi",
+   "name": "ARROSTICINI DI SCOTTONA MARCHIGIANA (10pz) CON PATATE A FORNO",
+   "description": "arrosticini di scottona , con patate a forno .",
+   "price": 10.0,
+   "image": "/img/prodotti/secondi-04.webp",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "secondi-05",
+   "categoryId": "secondi",
+   "name": "TAGLIATA DI SCOTTONA (minimo 500 gr)",
+   "description": "carne bovina",
+   "price": 5.0,
+   "image": "/img/prodotti/secondi-05.webp",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "secondi-06",
+   "categoryId": "secondi",
+   "name": "RIBES DI MAIALE (GR.600) CON SALSA SMOKE HONEY E CONTORNO DI PATATE A FORNO",
+   "description": "costine di maiale con salsa barbecue al miele e patate al forno",
+   "price": 15.0,
+   "image": "/img/prodotti/secondi-06.webp",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "secondi-07",
+   "categoryId": "secondi",
+   "name": "POLPETTE DI PULLED PORK con salsa barbecue 3 PZ",
+   "description": "Pulled pork, sala barbecue",
+   "price": 6.0,
+   "image": "/img/prodotti/secondi-07.webp",
+   "order": 6,
+   "available": true
+  },
+  {
+   "id": "secondi-08",
+   "categoryId": "secondi",
+   "name": "Parmigiana di melanzane",
+   "description": "melanzane , provola del Matese, sugo, e Parmigiano",
+   "price": 4.0,
+   "image": "/img/prodotti/secondi-08.webp",
+   "order": 7,
+   "available": true
+  },
+  {
+   "id": "secondi-09",
+   "categoryId": "secondi",
+   "name": "TARTARE DI SCOTTONA CON VERDURE A SCELTA",
+   "description": "CARNE DI BOVINO TIPO SCOTTONA 100 GR.CON VERDURE A SCELTA",
+   "price": 20.0,
+   "image": "/img/prodotti/secondi-09.webp",
+   "order": 8,
+   "available": true
+  },
+  {
+   "id": "contorni-01",
+   "categoryId": "contorni",
+   "name": "INSALATA",
+   "description": "",
+   "price": 3.5,
+   "image": "/img/prodotti/contorni-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "contorni-02",
+   "categoryId": "contorni",
+   "name": "VERDURE GRIGLIATE",
+   "description": "melanzane, zucchine",
+   "price": 5.0,
+   "image": "/img/prodotti/contorni-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "contorni-03",
+   "categoryId": "contorni",
+   "name": "PATATE AL FORNO",
+   "description": "patate a forno con aglio, rosmarino , erba cipollina, origano e olio oliva",
+   "price": 4.0,
+   "image": "",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "contorni-04",
+   "categoryId": "contorni",
+   "name": "RUCOLA E PARMIGIANO",
+   "description": "",
+   "price": 5.0,
+   "image": "",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "dolci-01",
+   "categoryId": "dolci",
+   "name": "* Tartufo nero, con cioccolato e cacao in polvere",
+   "description": "",
+   "price": 5.0,
+   "image": "/img/prodotti/dolci-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "dolci-02",
+   "categoryId": "dolci",
+   "name": "* Souffle’ al cioccolato, con cuore morbido al cioccolato",
+   "description": "",
+   "price": 5.0,
+   "image": "/img/prodotti/dolci-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "dolci-03",
+   "categoryId": "dolci",
+   "name": "Souffle’ al cioccolato, cuore morbido al pistacchio",
+   "description": "Tortino con cuore morbido al pistacchio",
+   "price": 6.0,
+   "image": "",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "dolci-04",
+   "categoryId": "dolci",
+   "name": "*Tartufo Bianco",
+   "description": "Sublime gelato al gusto di zabaione e caffe , con granella di meringa bianca e ripieno di crema al caffe",
+   "price": 5.0,
+   "image": "/img/prodotti/dolci-04.webp",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "dolci-05",
+   "categoryId": "dolci",
+   "name": "LIMONE RIPIENO",
+   "description": "Limone ripieno di gelato al Limone",
+   "price": 6.0,
+   "image": "/img/prodotti/dolci-05.webp",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "dolci-06",
+   "categoryId": "dolci",
+   "name": "Coppa tiramisu’",
+   "description": "",
+   "price": 6.0,
+   "image": "/img/prodotti/dolci-06.webp",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "bibite-01",
+   "categoryId": "bibite",
+   "name": "Acqua naturale 50cl",
+   "description": "",
+   "price": 1.0,
+   "image": "",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "bibite-02",
+   "categoryId": "bibite",
+   "name": "Acqua frizzante 50cl",
+   "description": "",
+   "price": 1.0,
+   "image": "",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "bibite-03",
+   "categoryId": "bibite",
+   "name": "Acqua naturale 75cl vetro",
+   "description": "",
+   "price": 2.5,
+   "image": "",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "bibite-04",
+   "categoryId": "bibite",
+   "name": "Acqua frizzante 75cl vetro",
+   "description": "",
+   "price": 2.5,
+   "image": "",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "bibite-05",
+   "categoryId": "bibite",
+   "name": "Coca cola 33cl",
+   "description": "",
+   "price": 2.5,
+   "image": "",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "bibite-06",
+   "categoryId": "bibite",
+   "name": "Coca cola 33cl zero",
+   "description": "",
+   "price": 2.5,
+   "image": "",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "bibite-07",
+   "categoryId": "bibite",
+   "name": "Coca cola zero zuccheri, zero calorie, zero caffeina,33cl",
+   "description": "",
+   "price": 2.8,
+   "image": "",
+   "order": 6,
+   "available": true
+  },
+  {
+   "id": "bibite-08",
+   "categoryId": "bibite",
+   "name": "Aranciata 33cl",
+   "description": "",
+   "price": 2.5,
+   "image": "",
+   "order": 7,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-01",
+   "categoryId": "birre-alla-spina",
+   "name": "TENNENT’S doppio malto cl 25",
+   "description": "Doppio makto 9%",
+   "price": 4.0,
+   "image": "/img/prodotti/birre-alla-spina-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-02",
+   "categoryId": "birre-alla-spina",
+   "name": "WARSTEINER TEDESCA BIONDA 25 cl",
+   "description": "",
+   "price": 3.0,
+   "image": "/img/prodotti/birre-alla-spina-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-03",
+   "categoryId": "birre-alla-spina",
+   "name": "WARSTEINER TEDESCA BIONDA 33 cl",
+   "description": "Leggera di colore giallo paglierino pallido e gradazione alcolica moderata sprigiona un intenso aroma di luppolo accompagnato da una di caramella d orzo , al primo sorso si coglie subito un lieve sapore di pane fresco immediatamente seguito dal gusto persistente e amarognolo del luppolo. Gradazione 4,8",
+   "price": 4.0,
+   "image": "/img/prodotti/birre-alla-spina-03.webp",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-04",
+   "categoryId": "birre-alla-spina",
+   "name": "WARSTEINER tedesca bionda 40cl",
+   "description": "Leggera di colore giallo paglierino pallido e gradazione alcolica moderata sprigiona un intenso aroma di luppolo accompagnato da una di caramella d orzo , al primo sorso si coglie subito un lieve sapore di pane fresco immediatamente seguito dal gusto persistente e amarognolo del luppolo. Gradazione 4,8",
+   "price": 4.5,
+   "image": "/img/prodotti/birre-alla-spina-04.webp",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-05",
+   "categoryId": "birre-alla-spina",
+   "name": "BUDVAR ORIGINAL LAGER 25 CL",
+   "description": "Budvar original é prodotta dal 1895 , nella sua città natale di Ceskè Budejovice,da cui prende il nome .800 anni di tradizione birraria .Una lager ricca e gustosa che rappresenta il riferimento per la produzione della birra Ceca in tutto il mondo.Prodotta con luppolo saaz integrale di Zatec,malto d orzo e il tradizionale lievito lager, dal colore dorato , un corpo medio e una schiuma abbondante .Il gusto è deciso , ma rinfrescante e perfettamente equilibrato .",
+   "price": 3.0,
+   "image": "/img/prodotti/birre-alla-spina-05.webp",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-06",
+   "categoryId": "birre-alla-spina",
+   "name": "BUDVAR BUDWEISER LAGER 33cl",
+   "description": "",
+   "price": 4.0,
+   "image": "/img/prodotti/birre-alla-spina-06.webp",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-07",
+   "categoryId": "birre-alla-spina",
+   "name": "BUDVAR ORIGINAL LAGER 40CL",
+   "description": "Budvar original é prodotta dal 1895 , nella sua città natale di Ceskè Budejovice,da cui prende il nome .800 anni di tradizione birraria .Una lager ricca e gustosa che rappresenta il riferimento per la produzione della birra Ceca in tutto il mondo.Prodotta con luppolo saaz integrale di Zatec,malto d orzo e il tradizionale lievito lager, dal colore dorato , un corpo medio e una schiuma abbondante .Il gusto è deciso , ma rinfrescante e perfettamente equilibrato .",
+   "price": 4.5,
+   "image": "/img/prodotti/birre-alla-spina-07.webp",
+   "order": 6,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-08",
+   "categoryId": "birre-alla-spina",
+   "name": "BUDVAR ORIGINAL LAGER 50cl",
+   "description": "Budvar original é prodotta dal 1895 , nella sua città natale di Ceskè Budejovice,da cui prende il nome .800 anni di tradizione birraria .Una lager ricca e gustosa che rappresenta il riferimento per la produzione della birra Ceca in tutto il mondo.Prodotta con luppolo saaz integrale di Zatec,malto d orzo e il tradizionale lievito lager, dal colore dorato , un corpo medio e una schiuma abbondante .Il gusto è deciso , ma rinfrescante e perfettamente equilibrato .",
+   "price": 5.0,
+   "image": "/img/prodotti/birre-alla-spina-08.webp",
+   "order": 7,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-09",
+   "categoryId": "birre-alla-spina",
+   "name": "KWAK red 25 cl",
+   "description": "una bìrra BELGA dal colore ambrato e dalla schiuma delicata , fine e persistente .All olfatto le note speziate e maltate , la rendono particolarnìmente invitante.Un perfetto equilibrio tra il dolce del lìmalto caramellato e l amaro finale",
+   "price": 5.0,
+   "image": "/img/prodotti/birre-alla-spina-09.webp",
+   "order": 8,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-10",
+   "categoryId": "birre-alla-spina",
+   "name": "KWAK RED 50CL",
+   "description": "Birra bionda forte, ineguagliabile, dal carattere tipicamente scozzese, condivide in pieno i valori del suo clan patronimico: la fierezza delle proprie origini, la forza del suo gusto tipico e intenso, e la sua raffinata superiorità. Dai toni morbidi e generosi, il sapore amaro è arrotondato dall'elevata gradazione alcolica e dai malti chiari che esaltano invece il gusto vellutato, quasi accarezzante nel finale.",
+   "price": 7.0,
+   "image": "/img/prodotti/birre-alla-spina-10.webp",
+   "order": 9,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-11",
+   "categoryId": "birre-alla-spina",
+   "name": "Brewdog Punk Ipa 40 cl",
+   "description": "Ipa di ispirazione americana. interamente prodotta con luppoli americani e neozelandesi, dove a livello olfattivo si rilevano intense note agrumate e tropicali, soprattutto pompelmo. frutto della passione e ananas. Al palato si conferma il piacevole carattere fruttato con un finale lungo e dissetante. Punk Ipa è il simbolo della rivoluzione craft in Europa, di grande impatto aromatico e ben bilanciata sul giaco di malti e luppoli.",
+   "price": 6.0,
+   "image": "/img/prodotti/birre-alla-spina-11.webp",
+   "order": 10,
+   "available": true
+  },
+  {
+   "id": "birre-alla-spina-12",
+   "categoryId": "birre-alla-spina",
+   "name": "Guinness 0,50 cl",
+   "description": "Prodotta con malto di altissima qualità che, previa tostatura, conferisce il caratteristico colore scuro. tendente al nero. All'olfatto si presenta con note di caffè appena tostato. Il sapore è secco, deciso e intenso. Questa birra, che di diritto viene considerata la stout numero uno al mondo, è caratterizzata da una schiuma densa, molto compatta e assolutamente persistente.",
+   "price": 7.0,
+   "image": "/img/prodotti/birre-alla-spina-12.webp",
+   "order": 11,
+   "available": true
+  },
+  {
+   "id": "birre-in-bottiglia-e-lattina-01",
+   "categoryId": "birre-in-bottiglia-e-lattina",
+   "name": "Weihenstephaner 0,50 cl vais",
+   "description": "Dal colare dorato brillante questa birra stupisce per i suoi profumi fruttati (banana ed ananas) e speziati di fiori di garofano. Realizzata secondo la tradizione tedesca al palato è ricca e fresca, si percepiscono dolci note di lievito e frutta gialla.",
+   "price": 6.0,
+   "image": "/img/prodotti/birre-in-bottiglia-e-lattina-01.webp",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "birre-in-bottiglia-e-lattina-02",
+   "categoryId": "birre-in-bottiglia-e-lattina",
+   "name": "Bavaria Birra Holland cl 0.50 in lattina",
+   "description": "Birra di colore chiaro , naturale , contenente nient'altro che malto d'orzo e luppolo 5 percentuale alcolica in volume",
+   "price": 2.5,
+   "image": "/img/prodotti/birre-in-bottiglia-e-lattina-02.webp",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "birre-in-bottiglia-e-lattina-03",
+   "categoryId": "birre-in-bottiglia-e-lattina",
+   "name": "GLUTEEN FREE cl 33",
+   "description": "",
+   "price": 5.0,
+   "image": "",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "birre-in-bottiglia-e-lattina-04",
+   "categoryId": "birre-in-bottiglia-e-lattina",
+   "name": "CL33 Birra con 0,0% alcool in bottiglia",
+   "description": "Birra caratterizzata da piacevoli note di luppolo. Questa birra ha un gusto pieno e bilanciata . Una birra corposa nonostante i 0,0% gradi alcolici.",
+   "price": 3.5,
+   "image": "",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "birre-in-bottiglia-e-lattina-05",
+   "categoryId": "birre-in-bottiglia-e-lattina",
+   "name": "FORST PREMIUM 33 cl",
+   "description": "Birra bionda 4,8 33 cl",
+   "price": 2.5,
+   "image": "",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "birre-in-bottiglia-e-lattina-06",
+   "categoryId": "birre-in-bottiglia-e-lattina",
+   "name": "WARSTEINER 4,8 33 cl",
+   "description": "Birra bionda tedesca",
+   "price": 2.5,
+   "image": "",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "vini-01",
+   "categoryId": "vini",
+   "name": "DOMODO NEGROAMARO PUGLIA IGP",
+   "description": "Vino rosso",
+   "price": 15.0,
+   "image": "",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "vini-02",
+   "categoryId": "vini",
+   "name": "PRIMITIVO PUGLIA IGP",
+   "description": "Vino rosso",
+   "price": 18.0,
+   "image": "",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "vini-03",
+   "categoryId": "vini",
+   "name": "MOËT & CHANDON ROSÈ",
+   "description": "",
+   "price": 90.0,
+   "image": "",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "vini-04",
+   "categoryId": "vini",
+   "name": "MAISON GALOUPET ROSÈ",
+   "description": "",
+   "price": 40.0,
+   "image": "",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "vini-05",
+   "categoryId": "vini",
+   "name": "PRIMITIVO DI MANDURIA PASSO DEL CARDINALE , PAOLOLEO DOP",
+   "description": "",
+   "price": 20.0,
+   "image": "",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "vini-06",
+   "categoryId": "vini",
+   "name": "PASSERINA IGP TERRE D 'ABRUZZO BORGO BARONE ( vino bianco)",
+   "description": "Vino bianco IGP",
+   "price": 13.0,
+   "image": "",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "vini-07",
+   "categoryId": "vini",
+   "name": "DOMODO NEGRAMARO 75cl VINO ROSSO DI PUGLIA",
+   "description": "",
+   "price": 15.0,
+   "image": "",
+   "order": 6,
+   "available": true
+  },
+  {
+   "id": "vini-08",
+   "categoryId": "vini",
+   "name": "PRIMITIVO DI PUGLIA 75cl PAOLO LEO VINO ROSSO",
+   "description": "",
+   "price": 18.0,
+   "image": "",
+   "order": 7,
+   "available": true
+  },
+  {
+   "id": "vini-09",
+   "categoryId": "vini",
+   "name": "KAJNERO AZIENDA AGRICOLA VESTINI CAMPAGNANO cl75",
+   "description": "",
+   "price": 25.0,
+   "image": "",
+   "order": 8,
+   "available": true
+  },
+  {
+   "id": "vini-10",
+   "categoryId": "vini",
+   "name": "CALICE DI VINO ROSSO MONTEPULCIANO",
+   "description": "VINO ROSSO",
+   "price": 4.0,
+   "image": "",
+   "order": 9,
+   "available": true
+  },
+  {
+   "id": "vini-11",
+   "categoryId": "vini",
+   "name": "CALICE DI VINO BIANCO PECORINO",
+   "description": "VINO BIANCO",
+   "price": 4.0,
+   "image": "",
+   "order": 10,
+   "available": true
+  },
+  {
+   "id": "vini-12",
+   "categoryId": "vini",
+   "name": "PASSERINA TENUTE LA PADRONA 75 cl",
+   "description": "",
+   "price": 18.0,
+   "image": "",
+   "order": 11,
+   "available": true
+  },
+  {
+   "id": "vini-13",
+   "categoryId": "vini",
+   "name": "Le barbatelle verdicchio superiore DOC 75cl",
+   "description": "",
+   "price": 15.0,
+   "image": "",
+   "order": 12,
+   "available": true
+  },
+  {
+   "id": "vini-14",
+   "categoryId": "vini",
+   "name": "D'antiche terre greco tufo 75cl",
+   "description": "",
+   "price": 15.0,
+   "image": "",
+   "order": 13,
+   "available": true
+  },
+  {
+   "id": "vini-15",
+   "categoryId": "vini",
+   "name": "Papa memoriae bianco 75cl",
+   "description": "",
+   "price": 20.0,
+   "image": "",
+   "order": 14,
+   "available": true
+  },
+  {
+   "id": "prosecchi-01",
+   "categoryId": "prosecchi",
+   "name": "Fratelli berlucchi freccianera franciacorta blanc de blanc 75cl",
+   "description": "",
+   "price": 30.0,
+   "image": "",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "prosecchi-02",
+   "categoryId": "prosecchi",
+   "name": "Rebuli valdobbiadene prosecco superiore 75cl",
+   "description": "",
+   "price": 15.0,
+   "image": "",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "prosecchi-03",
+   "categoryId": "prosecchi",
+   "name": "Bellavista alma brut cuvee 75cl",
+   "description": "",
+   "price": 45.0,
+   "image": "",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "distillati-01",
+   "categoryId": "distillati",
+   "name": "Grappa barricata",
+   "description": "",
+   "price": 3.5,
+   "image": "",
+   "order": 0,
+   "available": true
+  },
+  {
+   "id": "distillati-02",
+   "categoryId": "distillati",
+   "name": "The maccalan 12y whisky",
+   "description": "",
+   "price": 10.0,
+   "image": "",
+   "order": 1,
+   "available": true
+  },
+  {
+   "id": "distillati-03",
+   "categoryId": "distillati",
+   "name": "Caffe’",
+   "description": "",
+   "price": 1.0,
+   "image": "",
+   "order": 2,
+   "available": true
+  },
+  {
+   "id": "distillati-04",
+   "categoryId": "distillati",
+   "name": "Limoncello di Capri",
+   "description": "",
+   "price": 3.0,
+   "image": "",
+   "order": 3,
+   "available": true
+  },
+  {
+   "id": "distillati-05",
+   "categoryId": "distillati",
+   "name": "Amaro del capo",
+   "description": "",
+   "price": 3.0,
+   "image": "",
+   "order": 4,
+   "available": true
+  },
+  {
+   "id": "distillati-06",
+   "categoryId": "distillati",
+   "name": "Rum - Zacapa 23Y",
+   "description": "",
+   "price": 12.0,
+   "image": "",
+   "order": 5,
+   "available": true
+  },
+  {
+   "id": "distillati-07",
+   "categoryId": "distillati",
+   "name": "Rum - Don papa sherry cask",
+   "description": "",
+   "price": 15.0,
+   "image": "",
+   "order": 6,
+   "available": true
+  }
+ ],
+ "notes": [
+  "Coperto 1 €",
+  "Salse: maggiorazione 0,50 €",
+  "* Prodotti surgelati",
+  "Su richiesta panini vegetariani, senza glutine e senza lattosio",
+  "Si accettano animali di piccola taglia"
+ ]
+}
