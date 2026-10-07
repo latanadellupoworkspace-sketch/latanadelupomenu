@@ -1,3 +1,2 @@
 User-agent: *
 Disallow: /gestione-tana
-Disallow: /admin

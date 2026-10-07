@@ -1,11 +1,7 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/gestione-tana", "destination": "/admin.html" }
-  ],
   "headers": [
-    { "source": "/admin(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
-    { "source": "/gestione-tana", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
+    { "source": "/gestione-tana(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
     { "source": "/img/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
   ]
 }
