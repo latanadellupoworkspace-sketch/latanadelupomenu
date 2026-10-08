@@ -341,3 +341,20 @@ $("#v2Btn").addEventListener("click", async () => {
   } catch (err) { console.error(err); toast("Errore: " + (err.code || err.message)); }
   $("#v2Btn").disabled = false;
 });
+
+// ---------- PDF ----------
+// Generato al momento dai dati attuali: ogni modifica al menu è subito inclusa nel PDF.
+$("#pdfBtn").addEventListener("click", async () => {
+  const btn = $("#pdfBtn");
+  btn.disabled = true;
+  try {
+    const { generateMenuPdf } = await import("./pdf.js");
+    const name = await generateMenuPdf({
+      categories, products, settings: settings || {}, seed: await seedP,
+      onProgress: (m) => (btn.textContent = m.length > 22 ? m.slice(0, 22) + "…" : m)
+    });
+    toast("PDF scaricato ✔ " + name);
+  } catch (err) { console.error(err); toast("Errore PDF: " + err.message); }
+  btn.textContent = "📄 PDF";
+  btn.disabled = false;
+});
