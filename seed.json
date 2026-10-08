@@ -108,7 +108,9 @@
    "price": 15.0,
    "image": "",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-02",
@@ -118,7 +120,12 @@
    "price": 3.5,
    "image": "/img/prodotti/antipasti-e-fritti-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [
+    "abbattuto",
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-03",
@@ -128,7 +135,12 @@
    "price": 3.0,
    "image": "/img/prodotti/antipasti-e-fritti-03.webp",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [
+    "abbattuto",
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-04",
@@ -138,7 +150,12 @@
    "price": 3.0,
    "image": "/img/prodotti/antipasti-e-fritti-04.webp",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [
+    "abbattuto",
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-05",
@@ -148,7 +165,12 @@
    "price": 5.4,
    "image": "/img/prodotti/antipasti-e-fritti-05.webp",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [
+    "abbattuto",
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-06",
@@ -158,7 +180,12 @@
    "price": 5.4,
    "image": "/img/prodotti/antipasti-e-fritti-06.webp",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [
+    "abbattuto",
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-07",
@@ -168,7 +195,11 @@
    "price": 4.0,
    "image": "/img/prodotti/antipasti-e-fritti-07.webp",
    "order": 6,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-08",
@@ -178,7 +209,11 @@
    "price": 3.0,
    "image": "/img/prodotti/antipasti-e-fritti-08.webp",
    "order": 7,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-09",
@@ -188,7 +223,11 @@
    "price": 5.5,
    "image": "/img/prodotti/antipasti-e-fritti-09.webp",
    "order": 8,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-10",
@@ -198,7 +237,11 @@
    "price": 8.0,
    "image": "/img/prodotti/antipasti-e-fritti-10.webp",
    "order": 9,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-11",
@@ -208,7 +251,9 @@
    "price": 5.0,
    "image": "/img/prodotti/antipasti-e-fritti-11.webp",
    "order": 10,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-12",
@@ -218,7 +263,9 @@
    "price": 3.5,
    "image": "/img/prodotti/antipasti-e-fritti-12.webp",
    "order": 11,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "antipasti-e-fritti-13",
@@ -228,7 +275,11 @@
    "price": 10.0,
    "image": "/img/prodotti/antipasti-e-fritti-13.webp",
    "order": 12,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "panini-01",
@@ -238,7 +289,9 @@
    "price": 13.0,
    "image": "/img/prodotti/panini-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-02",
@@ -248,7 +301,11 @@
    "price": 12.0,
    "image": "/img/prodotti/panini-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "panini-03",
@@ -258,7 +315,11 @@
    "price": 10.5,
    "image": "/img/prodotti/panini-03.webp",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "panini-04",
@@ -268,7 +329,11 @@
    "price": 12.0,
    "image": "/img/prodotti/panini-04.webp",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "panini-05",
@@ -278,7 +343,9 @@
    "price": 11.0,
    "image": "/img/prodotti/panini-05.webp",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-06",
@@ -288,7 +355,11 @@
    "price": 10.0,
    "image": "/img/prodotti/panini-06.webp",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "panini-07",
@@ -298,7 +369,11 @@
    "price": 15.0,
    "image": "/img/prodotti/panini-07.webp",
    "order": 6,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "panini-08",
@@ -308,7 +383,9 @@
    "price": 12.0,
    "image": "/img/prodotti/panini-08.webp",
    "order": 7,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-09",
@@ -318,7 +395,9 @@
    "price": 12.0,
    "image": "/img/prodotti/panini-09.webp",
    "order": 8,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-10",
@@ -328,7 +407,9 @@
    "price": 15.0,
    "image": "/img/prodotti/panini-10.webp",
    "order": 9,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-11",
@@ -338,7 +419,9 @@
    "price": 11.5,
    "image": "/img/prodotti/panini-11.webp",
    "order": 10,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-12",
@@ -348,7 +431,9 @@
    "price": 4.0,
    "image": "/img/prodotti/panini-12.webp",
    "order": 11,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-new-01",
@@ -358,7 +443,11 @@
    "price": 10.35,
    "image": "/img/prodotti/panini-new-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "panini-new-02",
@@ -368,7 +457,12 @@
    "price": 12.5,
    "image": "/img/prodotti/panini-new-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [
+    "piccante",
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "panini-new-03",
@@ -378,7 +472,9 @@
    "price": 11.9,
    "image": "/img/prodotti/panini-new-03.webp",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-new-04",
@@ -388,7 +484,9 @@
    "price": 10.0,
    "image": "/img/prodotti/panini-new-04.webp",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "panini-new-05",
@@ -398,7 +496,9 @@
    "price": 12.0,
    "image": "/img/prodotti/panini-new-05.webp",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "smash-burgers-01",
@@ -408,7 +508,11 @@
    "price": 7.0,
    "image": "/img/prodotti/smash-burgers-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [
+    "piccante"
+   ],
+   "allergens": []
   },
   {
    "id": "smash-burgers-02",
@@ -418,7 +522,9 @@
    "price": 7.0,
    "image": "/img/prodotti/smash-burgers-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "smash-burgers-03",
@@ -428,7 +534,9 @@
    "price": 7.0,
    "image": "/img/prodotti/smash-burgers-03.webp",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "smash-burgers-04",
@@ -438,7 +546,11 @@
    "price": 10.0,
    "image": "/img/prodotti/smash-burgers-04.webp",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "smash-burgers-05",
@@ -448,7 +560,11 @@
    "price": 10.0,
    "image": "/img/prodotti/smash-burgers-05.webp",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "american-hot-dog-01",
@@ -458,7 +574,9 @@
    "price": 5.0,
    "image": "/img/prodotti/american-hot-dog-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "american-hot-dog-02",
@@ -468,7 +586,9 @@
    "price": 5.5,
    "image": "/img/prodotti/american-hot-dog-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "secondi-01",
@@ -478,7 +598,11 @@
    "price": 7.5,
    "image": "/img/prodotti/secondi-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "secondi-02",
@@ -488,7 +612,9 @@
    "price": 7.5,
    "image": "/img/prodotti/secondi-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "secondi-03",
@@ -498,7 +624,11 @@
    "price": 10.0,
    "image": "/img/prodotti/secondi-03.webp",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "secondi-04",
@@ -508,7 +638,9 @@
    "price": 10.0,
    "image": "/img/prodotti/secondi-04.webp",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "secondi-05",
@@ -518,7 +650,12 @@
    "price": 5.0,
    "image": "/img/prodotti/secondi-05.webp",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [
+    "senza-glutine",
+    "senza-lattosio"
+   ],
+   "allergens": []
   },
   {
    "id": "secondi-06",
@@ -528,7 +665,9 @@
    "price": 15.0,
    "image": "/img/prodotti/secondi-06.webp",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "secondi-07",
@@ -538,7 +677,9 @@
    "price": 6.0,
    "image": "/img/prodotti/secondi-07.webp",
    "order": 6,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "secondi-08",
@@ -548,7 +689,11 @@
    "price": 4.0,
    "image": "/img/prodotti/secondi-08.webp",
    "order": 7,
-   "available": true
+   "available": true,
+   "tags": [
+    "surgelato"
+   ],
+   "allergens": []
   },
   {
    "id": "secondi-09",
@@ -558,7 +703,9 @@
    "price": 20.0,
    "image": "/img/prodotti/secondi-09.webp",
    "order": 8,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "contorni-01",
@@ -568,7 +715,9 @@
    "price": 3.5,
    "image": "/img/prodotti/contorni-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "contorni-02",
@@ -578,7 +727,9 @@
    "price": 5.0,
    "image": "/img/prodotti/contorni-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "contorni-03",
@@ -588,7 +739,9 @@
    "price": 4.0,
    "image": "",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "contorni-04",
@@ -598,7 +751,9 @@
    "price": 5.0,
    "image": "",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "dolci-01",
@@ -608,7 +763,9 @@
    "price": 5.0,
    "image": "/img/prodotti/dolci-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "dolci-02",
@@ -618,7 +775,9 @@
    "price": 5.0,
    "image": "/img/prodotti/dolci-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "dolci-03",
@@ -628,7 +787,9 @@
    "price": 6.0,
    "image": "",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "dolci-04",
@@ -638,7 +799,9 @@
    "price": 5.0,
    "image": "/img/prodotti/dolci-04.webp",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "dolci-05",
@@ -648,7 +811,9 @@
    "price": 6.0,
    "image": "/img/prodotti/dolci-05.webp",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "dolci-06",
@@ -658,7 +823,9 @@
    "price": 6.0,
    "image": "/img/prodotti/dolci-06.webp",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "bibite-01",
@@ -668,7 +835,9 @@
    "price": 1.0,
    "image": "",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "bibite-02",
@@ -678,7 +847,9 @@
    "price": 1.0,
    "image": "",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "bibite-03",
@@ -688,7 +859,9 @@
    "price": 2.5,
    "image": "",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "bibite-04",
@@ -698,7 +871,9 @@
    "price": 2.5,
    "image": "",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "bibite-05",
@@ -708,7 +883,9 @@
    "price": 2.5,
    "image": "",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "bibite-06",
@@ -718,7 +895,9 @@
    "price": 2.5,
    "image": "",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "bibite-07",
@@ -728,7 +907,9 @@
    "price": 2.8,
    "image": "",
    "order": 6,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "bibite-08",
@@ -738,7 +919,9 @@
    "price": 2.5,
    "image": "",
    "order": 7,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-01",
@@ -748,7 +931,9 @@
    "price": 4.0,
    "image": "/img/prodotti/birre-alla-spina-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-02",
@@ -758,7 +943,9 @@
    "price": 3.0,
    "image": "/img/prodotti/birre-alla-spina-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-03",
@@ -768,7 +955,9 @@
    "price": 4.0,
    "image": "/img/prodotti/birre-alla-spina-03.webp",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-04",
@@ -778,7 +967,9 @@
    "price": 4.5,
    "image": "/img/prodotti/birre-alla-spina-04.webp",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-05",
@@ -788,7 +979,9 @@
    "price": 3.0,
    "image": "/img/prodotti/birre-alla-spina-05.webp",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-06",
@@ -798,7 +991,9 @@
    "price": 4.0,
    "image": "/img/prodotti/birre-alla-spina-06.webp",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-07",
@@ -808,7 +1003,9 @@
    "price": 4.5,
    "image": "/img/prodotti/birre-alla-spina-07.webp",
    "order": 6,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-08",
@@ -818,7 +1015,9 @@
    "price": 5.0,
    "image": "/img/prodotti/birre-alla-spina-08.webp",
    "order": 7,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-09",
@@ -828,7 +1027,9 @@
    "price": 5.0,
    "image": "/img/prodotti/birre-alla-spina-09.webp",
    "order": 8,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-10",
@@ -838,7 +1039,9 @@
    "price": 7.0,
    "image": "/img/prodotti/birre-alla-spina-10.webp",
    "order": 9,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-11",
@@ -848,7 +1051,9 @@
    "price": 6.0,
    "image": "/img/prodotti/birre-alla-spina-11.webp",
    "order": 10,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-alla-spina-12",
@@ -858,7 +1063,9 @@
    "price": 7.0,
    "image": "/img/prodotti/birre-alla-spina-12.webp",
    "order": 11,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-in-bottiglia-e-lattina-01",
@@ -868,7 +1075,9 @@
    "price": 6.0,
    "image": "/img/prodotti/birre-in-bottiglia-e-lattina-01.webp",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-in-bottiglia-e-lattina-02",
@@ -878,7 +1087,9 @@
    "price": 2.5,
    "image": "/img/prodotti/birre-in-bottiglia-e-lattina-02.webp",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-in-bottiglia-e-lattina-03",
@@ -888,7 +1099,9 @@
    "price": 5.0,
    "image": "",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-in-bottiglia-e-lattina-04",
@@ -898,7 +1111,9 @@
    "price": 3.5,
    "image": "",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-in-bottiglia-e-lattina-05",
@@ -908,7 +1123,9 @@
    "price": 2.5,
    "image": "",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "birre-in-bottiglia-e-lattina-06",
@@ -918,7 +1135,9 @@
    "price": 2.5,
    "image": "",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-01",
@@ -928,7 +1147,9 @@
    "price": 15.0,
    "image": "",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-02",
@@ -938,7 +1159,9 @@
    "price": 18.0,
    "image": "",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-03",
@@ -948,7 +1171,9 @@
    "price": 90.0,
    "image": "",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-04",
@@ -958,7 +1183,9 @@
    "price": 40.0,
    "image": "",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-05",
@@ -968,7 +1195,9 @@
    "price": 20.0,
    "image": "",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-06",
@@ -978,7 +1207,9 @@
    "price": 13.0,
    "image": "",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-07",
@@ -988,7 +1219,9 @@
    "price": 15.0,
    "image": "",
    "order": 6,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-08",
@@ -998,7 +1231,9 @@
    "price": 18.0,
    "image": "",
    "order": 7,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-09",
@@ -1008,7 +1243,9 @@
    "price": 25.0,
    "image": "",
    "order": 8,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-10",
@@ -1018,7 +1255,9 @@
    "price": 4.0,
    "image": "",
    "order": 9,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-11",
@@ -1028,7 +1267,9 @@
    "price": 4.0,
    "image": "",
    "order": 10,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-12",
@@ -1038,7 +1279,9 @@
    "price": 18.0,
    "image": "",
    "order": 11,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-13",
@@ -1048,7 +1291,9 @@
    "price": 15.0,
    "image": "",
    "order": 12,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-14",
@@ -1058,7 +1303,9 @@
    "price": 15.0,
    "image": "",
    "order": 13,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "vini-15",
@@ -1068,7 +1315,9 @@
    "price": 20.0,
    "image": "",
    "order": 14,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "prosecchi-01",
@@ -1078,7 +1327,9 @@
    "price": 30.0,
    "image": "",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "prosecchi-02",
@@ -1088,7 +1339,9 @@
    "price": 15.0,
    "image": "",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "prosecchi-03",
@@ -1098,7 +1351,9 @@
    "price": 45.0,
    "image": "",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "distillati-01",
@@ -1108,7 +1363,9 @@
    "price": 3.5,
    "image": "",
    "order": 0,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "distillati-02",
@@ -1118,7 +1375,9 @@
    "price": 10.0,
    "image": "",
    "order": 1,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "distillati-03",
@@ -1128,7 +1387,9 @@
    "price": 1.0,
    "image": "",
    "order": 2,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "distillati-04",
@@ -1138,7 +1399,9 @@
    "price": 3.0,
    "image": "",
    "order": 3,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "distillati-05",
@@ -1148,7 +1411,9 @@
    "price": 3.0,
    "image": "",
    "order": 4,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "distillati-06",
@@ -1158,7 +1423,9 @@
    "price": 12.0,
    "image": "",
    "order": 5,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   },
   {
    "id": "distillati-07",
@@ -1168,7 +1435,9 @@
    "price": 15.0,
    "image": "",
    "order": 6,
-   "available": true
+   "available": true,
+   "tags": [],
+   "allergens": []
   }
  ],
  "notes": [
@@ -1177,5 +1446,161 @@
   "* Prodotti surgelati",
   "Su richiesta panini vegetariani, senza glutine e senza lattosio",
   "Si accettano animali di piccola taglia"
- ]
+ ],
+ "allergens": [
+  {
+   "id": "glutine",
+   "icon": "🌾",
+   "name": "Cereali contenenti glutine",
+   "description": "Grano (tra cui farro e grano khorasan), segale, orzo, avena o i loro ceppi ibridati e prodotti derivati."
+  },
+  {
+   "id": "crostacei",
+   "icon": "🦐",
+   "name": "Crostacei",
+   "description": "Crostacei e prodotti a base di crostacei."
+  },
+  {
+   "id": "uova",
+   "icon": "🥚",
+   "name": "Uova",
+   "description": "Uova e prodotti a base di uova."
+  },
+  {
+   "id": "pesce",
+   "icon": "🐟",
+   "name": "Pesce",
+   "description": "Pesce e prodotti della pesca."
+  },
+  {
+   "id": "arachidi",
+   "icon": "🥜",
+   "name": "Arachidi",
+   "description": "Arachidi e prodotti a base di arachidi."
+  },
+  {
+   "id": "soia",
+   "icon": "🫘",
+   "name": "Soia",
+   "description": "Soia e prodotti a base di soia."
+  },
+  {
+   "id": "latte",
+   "icon": "🥛",
+   "name": "Latte",
+   "description": "Latte e prodotti a base di latte (incluso lattosio)."
+  },
+  {
+   "id": "frutta-guscio",
+   "icon": "🌰",
+   "name": "Frutta a guscio",
+   "description": "Mandorle, nocciole, noci, noci di acagiù, noci di pecan, noci del Brasile, pistacchi, noci macadamia e i loro prodotti."
+  },
+  {
+   "id": "sedano",
+   "icon": "🥬",
+   "name": "Sedano",
+   "description": "Sedano e prodotti a base di sedano."
+  },
+  {
+   "id": "senape",
+   "icon": "🟡",
+   "name": "Senape",
+   "description": "Senape e prodotti a base di senape."
+  },
+  {
+   "id": "sesamo",
+   "icon": "⚪",
+   "name": "Semi di sesamo",
+   "description": "Semi di sesamo e prodotti a base di semi di sesamo."
+  },
+  {
+   "id": "solfiti",
+   "icon": "🍷",
+   "name": "Anidride solforosa e solfiti",
+   "description": "In concentrazioni superiori a 10 mg/kg o 10 mg/litro espressi come SO2 totale."
+  },
+  {
+   "id": "lupini",
+   "icon": "🌼",
+   "name": "Lupini",
+   "description": "Lupini e prodotti a base di lupini."
+  },
+  {
+   "id": "molluschi",
+   "icon": "🦪",
+   "name": "Molluschi",
+   "description": "Molluschi e prodotti a base di molluschi."
+  }
+ ],
+ "reviews": [
+  {
+   "author": "Paolo M.",
+   "rating": 5,
+   "text": "Vengo a mangiare in questo locale quasi ogni fine settimana ed è incredibile come riescano a stupirmi ogni volta. Il servizio è impeccabile, con dei ragazzi super gentili. Se c'è scritto sopra un piatto \"consigliato dallo chef\" fidatevi!"
+  },
+  {
+   "author": "Federico T.",
+   "rating": 5,
+   "text": "Una piacevole scoperta: locale accogliente, pulito e con una piacevole atmosfera, antipasti ottimi, il panino era squisito con ingredienti freschi e cottura della carne così come richiesta. Ci tornerò senz’altro!"
+  },
+  {
+   "author": "Michele C.",
+   "rating": 5,
+   "text": "Personale gentile e cortese. Cibo cucinato molto bene, in modo semplice e salutare. Tempi di attesa brevissimi. Birre superlative."
+  },
+  {
+   "author": "Marilena A.",
+   "rating": 5,
+   "text": "Il posto è veramente carino e accogliente! Cibo di ottima qualità e ben cucinato! Personale cordiale e disponibile. Ottimo rapporto qualità/prezzo."
+  },
+  {
+   "author": "Chef Nerone",
+   "rating": 5,
+   "text": "Cena magnifica! Cottura della carne top, una vasta scelta di birre (consiglio l’IPA), personale cordiale: vi sentite a casa."
+  },
+  {
+   "author": "Luigi V.",
+   "rating": 5,
+   "text": "Locale molto accogliente e comodo, personale gentile. Panini molto buoni e menu abbastanza variegato."
+  },
+  {
+   "author": "Monika D.",
+   "rating": 5,
+   "text": "Locale molto simpatico, cibo di ottima qualità. Buoni i panini e le stuzzicherie. Super le alette di pollo!"
+  },
+  {
+   "author": "Roberto P.",
+   "rating": 5,
+   "text": "Panini ottimi, ribs eccezionali e prezzi nella norma, proprietario simpaticissimo."
+  },
+  {
+   "author": "Asia",
+   "rating": 5,
+   "text": "Il locale è molto accogliente e caratteristico, cibo di ottima qualità e ben preparato, servizio impeccabile e personale molto gentile. Consigliatissimo!"
+  },
+  {
+   "author": "Paul M.",
+   "rating": 5,
+   "text": "Personale impeccabile, abbiamo mangiato da Dio e aspettato pochissimo. L'hamburger e la carne cotti alla perfezione, ci tornerò sicuramente."
+  },
+  {
+   "author": "Veronica F.",
+   "rating": 5,
+   "text": "Panini strepitosi con ingredienti di ottima qualità."
+  },
+  {
+   "author": "Sergio C.",
+   "rating": 4,
+   "text": "Esperienza positiva, carne ottima, servizio impeccabile."
+  }
+ ],
+ "info": {
+  "address": "Via Abruzzi, 2, 81058 Vairano Scalo (CE)",
+  "phone": "0823 376838",
+  "googleRating": 4.6,
+  "googleCount": 43,
+  "googleUrl": "https://maps.google.com/?cid=1733506735711813195",
+  "mapsQuery": "La tana del lupo, Via Abruzzi 2, 81058 Vairano Scalo CE"
+ }
 }

@@ -40,11 +40,17 @@
       <button class="tab active" data-tab="products">Prodotti</button>
       <button class="tab" data-tab="categories">Categorie</button>
       <button class="tab" data-tab="notes">Note</button>
+      <button class="tab" data-tab="info">Info</button>
     </nav>
 
     <div id="seedBanner" class="banner" hidden>
       <p><strong>Il database è vuoto.</strong> Vuoi importare il menu attuale (14 categorie, 107 prodotti con foto)?</p>
       <button id="seedBtn" class="btn gold">Importa menu iniziale</button>
+    </div>
+
+    <div id="v2Banner" class="banner" hidden>
+      <p><strong>Novità:</strong> importa caratteristiche prodotti (surgelato, piccante…), indirizzo e recensioni Google.</p>
+      <button id="v2Btn" class="btn gold">Importa</button>
     </div>
 
     <main class="panel" id="tab-products">
@@ -66,6 +72,24 @@
       <textarea id="notesText" rows="8"></textarea>
       <button class="btn gold" id="saveNotes">Salva note</button>
     </main>
+    <main class="panel" id="tab-info" hidden>
+      <h2 class="sec-h">📍 Dove siamo</h2>
+      <label>Indirizzo<input id="iAddr"></label>
+      <label>Ricerca su Google Maps (per mappa e indicazioni)<input id="iMaps"></label>
+      <label>Telefono<input id="iPhone" inputmode="tel"></label>
+      <h2 class="sec-h">⭐ Google</h2>
+      <div class="row">
+        <label>Valutazione<input id="iRating" type="number" step="0.1" min="0" max="5"></label>
+        <label>N. recensioni<input id="iCount" type="number" step="1" min="0"></label>
+      </div>
+      <label>Link scheda Google<input id="iGUrl" type="url"></label>
+      <h2 class="sec-h">💬 Recensioni mostrate nel menu</h2>
+      <div id="revList"></div>
+      <div class="toolbar">
+        <button class="btn ghost" id="addRev">+ Recensione</button>
+        <button class="btn gold" id="saveInfo">Salva info e recensioni</button>
+      </div>
+    </main>
   </section>
 
   <!-- MODALE PRODOTTO -->
@@ -86,6 +110,10 @@
         <label>Ordine<input id="pOrder" type="number" step="1"></label>
       </div>
       <label>Categoria<select id="pCat" required></select></label>
+      <p class="mini-h">Caratteristiche</p>
+      <div class="chipset" id="pTags"></div>
+      <p class="mini-h">Allergeni</p>
+      <div class="chipset" id="pAllergens"></div>
       <div class="row checks">
         <label class="check"><input type="checkbox" id="pAvail"> Disponibile</label>
         <label class="check"><input type="checkbox" id="pVisible"> Visibile</label>

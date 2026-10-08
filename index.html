@@ -61,10 +61,54 @@
     <div class="loader" id="loader"><div class="paw"></div><p>Il lupo sta preparando il menu…</p></div>
   </main>
 
-  <footer class="foot">
+  <div class="extra">
     <div class="notes" id="notes"></div>
+
+    <section class="cat xsec" id="cat-recensioni" data-cat="recensioni">
+      <header class="cat-head reveal">
+        <span class="cat-emoji">⭐</span>
+        <h2 class="cat-title">Dicono di Noi</h2>
+        <div class="cat-rule">✦</div>
+      </header>
+      <div class="rating reveal" id="rating"></div>
+      <div class="reviews" id="reviews"></div>
+      <div class="xbtns reveal">
+        <a class="btn-gold" id="gReviews" target="_blank" rel="noopener">Leggi tutte su Google</a>
+      </div>
+    </section>
+
+    <section class="cat xsec" id="cat-dove-siamo" data-cat="dove-siamo">
+      <header class="cat-head reveal">
+        <span class="cat-emoji">📍</span>
+        <h2 class="cat-title">Dove Siamo</h2>
+        <div class="cat-rule">✦</div>
+      </header>
+      <div class="where reveal">
+        <div class="map"><iframe id="map" title="Mappa La Tana del Lupo" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <div class="where-body">
+          <p class="addr" id="addr"></p>
+          <div class="xbtns">
+            <a class="btn-gold" id="directions" target="_blank" rel="noopener">🧭 Indicazioni</a>
+            <a class="btn-ghost" id="call">📞 Chiama</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cat xsec" id="cat-allergeni" data-cat="allergeni">
+      <header class="cat-head reveal">
+        <span class="cat-emoji">⚠️</span>
+        <h2 class="cat-title">Allergeni</h2>
+        <div class="cat-rule">✦</div>
+        <p class="cat-desc">Per la tua sicurezza, consulta gli allergeni e comunicaci le tue esigenze alimentari. Il personale è a disposizione per ogni informazione.</p>
+      </header>
+      <div class="legend reveal" id="legend"></div>
+      <div class="allergens-list" id="allergens"></div>
+    </section>
+  </div>
+
+  <footer class="foot">
     <p class="about">La Tana del Lupo è il luogo ideale per chi ama hamburger premium, smash burger, birre di qualità e serate in compagnia.</p>
-    <p class="allergens">Per allergie e intolleranze chiedi al personale.</p>
     <p class="copy">© <span id="yr"></span> La Tana del Lupo</p>
   </footer>
 
@@ -76,6 +120,7 @@
       <div class="modal-body">
         <h3 id="mName"></h3>
         <p id="mDesc"></p>
+        <div class="m-tags" id="mTags"></div>
         <div class="modal-price" id="mPrice"></div>
       </div>
     </article>

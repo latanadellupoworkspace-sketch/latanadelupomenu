@@ -94,3 +94,16 @@ textarea#notesText { margin-bottom: 12px; }
 .toast { position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 120px); background: #111; color: #fff;
   padding: 12px 18px; border-radius: 12px; border: 1px solid var(--line); transition: transform .3s; z-index: 999; max-width: 90vw; }
 .toast.show { transform: translate(-50%, 0); }
+
+.sec-h { font-size: 17px; color: var(--gold); margin: 22px 0 10px; }
+.mini-h { font: 600 12px "Oswald", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 4px 0 6px; }
+.chipset { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.chipset label { margin: 0; display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--cream); font-size: 13px; cursor: pointer; user-select: none; }
+.chipset input { display: none; }
+.chipset label:has(input:checked) { background: var(--gold); color: #2a0d06; border-color: transparent; }
+.rev { background: var(--panel); border: 1px solid rgba(242,183,60,.12); border-radius: 12px; padding: 12px; margin-bottom: 10px; }
+.rev .row { align-items: flex-end; }
+.rev label { margin-bottom: 8px; }
+.rev .rate { flex: 0 0 90px; }
+.rev .del { flex: none; margin-bottom: 8px; }

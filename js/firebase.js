@@ -19,9 +19,23 @@ export const SDK = "https://www.gstatic.com/firebasejs/11.10.0";
 export const formatPrice = (n) =>
   "€ " + Number(n || 0).toFixed(2).replace(".", ",");
 
-// Carica il menu: prima Firestore, se vuoto/irraggiungibile usa seed.json
+// Caratteristiche prodotto (importate da leggimenu + gestibili da admin)
+export const TAGS = {
+  "surgelato": { icon: "❄️", label: "Contiene prodotti surgelati" },
+  "abbattuto": { icon: "🧊", label: "Contiene prodotti abbattuti" },
+  "piccante": { icon: "🌶️", label: "Piccante" },
+  "senza-glutine": { icon: "🌾", label: "Senza glutine" },
+  "senza-lattosio": { icon: "🥛", label: "Senza lattosio" },
+  "vegetariano": { icon: "🥦", label: "Vegetariano" }
+};
+
+export const fetchSeed = () => fetch("/seed.json").then((r) => r.json());
+
+// Carica il menu: prima Firestore, se vuoto/irraggiungibile usa seed.json.
+// settings/general contiene: notes, info (indirizzo, rating Google…), reviews.
 export async function loadMenu() {
   const { collection, getDocs, doc, getDoc } = await import(`${SDK}/firebase-firestore.js`);
+  const seedP = fetchSeed();
   try {
     const [cs, ps, st] = await Promise.all([
       getDocs(collection(db, "categories")),
@@ -29,16 +43,20 @@ export async function loadMenu() {
       getDoc(doc(db, "settings", "general"))
     ]);
     if (!cs.empty) {
+      const seed = await seedP;
+      const s = st.exists() ? st.data() : {};
       return {
         source: "firestore",
         categories: cs.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
         products: ps.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
-        notes: st.exists() ? st.data().notes || [] : []
+        notes: s.notes || [],
+        info: { ...seed.info, ...(s.info || {}) },
+        reviews: s.reviews || seed.reviews,
+        allergens: seed.allergens
       };
     }
   } catch (e) {
     console.warn("Firestore non disponibile, uso seed.json", e);
   }
-  const seed = await fetch("/seed.json").then((r) => r.json());
-  return { source: "seed", ...seed };
+  return { source: "seed", ...(await seedP) };
 }

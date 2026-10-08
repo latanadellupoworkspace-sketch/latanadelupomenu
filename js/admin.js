@@ -1,4 +1,4 @@
-import { app, db, SDK, formatPrice } from "./firebase.js";
+import { app, db, SDK, formatPrice, TAGS, fetchSeed } from "./firebase.js";
 const { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, setPersistence, browserLocalPersistence } =
   await import(`${SDK}/firebase-auth.js`);
 const { collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, writeBatch, serverTimestamp } =
@@ -11,7 +11,8 @@ const toast = (msg) => { const t = $("#toast"); t.textContent = msg; t.classList
 const auth = getAuth(app);
 await setPersistence(auth, browserLocalPersistence);
 
-let categories = [], products = [], unsubs = [];
+let categories = [], products = [], unsubs = [], settings = null;
+const seedP = fetchSeed();
 
 // ---------- AUTH ----------
 onAuthStateChanged(auth, (user) => {
@@ -44,12 +45,16 @@ function startListeners() {
     renderAll();
   }));
   unsubs.push(onSnapshot(doc(db, "settings", "general"), (s) => {
-    if (document.activeElement !== $("#notesText")) $("#notesText").value = (s.data()?.notes || []).join("\n");
+    settings = s.data() || {};
+    if (document.activeElement !== $("#notesText")) $("#notesText").value = (settings.notes || []).join("\n");
+    renderInfo();
+    $("#v2Banner").hidden = !categories.length || !!settings.v2;
   }));
 }
 
 function renderAll() {
   $("#seedBanner").hidden = categories.length > 0;
+  $("#v2Banner").hidden = !categories.length || !settings || !!settings.v2;
   // filtro + select categoria
   const cur = $("#pFilter").value;
   const opts = categories.map((c) => `<option value="${esc(c.id)}">${esc(c.emoji || "")} ${esc(c.name)}</option>`).join("");
@@ -104,7 +109,7 @@ $("#pFilter").addEventListener("change", renderProducts);
 // ---------- TABS ----------
 document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
   document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("active", x === t));
-  ["products", "categories", "notes"].forEach((n) => ($("#tab-" + n).hidden = n !== t.dataset.tab));
+  ["products", "categories", "notes", "info"].forEach((n) => ($("#tab-" + n).hidden = n !== t.dataset.tab));
 }));
 document.querySelectorAll("[data-cancel]").forEach((b) => b.addEventListener("click", () => b.closest("dialog").close()));
 
@@ -146,6 +151,11 @@ function openProduct(p) {
   $("#pAvail").checked = p?.available !== false;
   $("#pVisible").checked = p?.visible !== false;
   $("#pDelete").hidden = !p;
+  const chk = (name, val, on, txt) => `<label><input type="checkbox" name="${name}" value="${val}" ${on ? "checked" : ""}>${txt}</label>`;
+  $("#pTags").innerHTML = Object.entries(TAGS).map(([k, t]) => chk("tag", k, p?.tags?.includes(k), `${t.icon} ${t.label}`)).join("");
+  seedP.then((seed) => {
+    $("#pAllergens").innerHTML = seed.allergens.map((a) => chk("alg", a.id, p?.allergens?.includes(a.id), `${a.icon} ${a.name}`)).join("");
+  });
   setPreview(p?.image);
   $("#photoInput").value = "";
   $("#pDialog").showModal();
@@ -177,6 +187,8 @@ $("#pForm").addEventListener("submit", async (e) => {
     available: $("#pAvail").checked,
     visible: $("#pVisible").checked,
     image: pImage,
+    tags: [...document.querySelectorAll("#pTags input:checked")].map((i) => i.value),
+    allergens: [...document.querySelectorAll("#pAllergens input:checked")].map((i) => i.value),
     updatedAt: serverTimestamp()
   };
   $("#pSave").disabled = true;
@@ -255,9 +267,77 @@ $("#seedBtn").addEventListener("click", async () => {
     const batch = writeBatch(db);
     seed.categories.forEach(({ id, ...c }) => batch.set(doc(db, "categories", id), { ...c, visible: true }));
     seed.products.forEach(({ id, ...p }) => batch.set(doc(db, "products", id), { ...p, visible: true }));
-    batch.set(doc(db, "settings", "general"), { notes: seed.notes });
+    batch.set(doc(db, "settings", "general"), { notes: seed.notes, info: seed.info, reviews: seed.reviews, v2: true });
     await batch.commit();
     toast(`Importati ${seed.products.length} prodotti ✔`);
   } catch (err) { console.error(err); toast("Errore import: " + (err.code || err.message)); }
   $("#seedBtn").disabled = false;
+});
+
+// ---------- INFO & RECENSIONI ----------
+let revs = [], infoLoaded = false;
+async function renderInfo() {
+  if (infoLoaded || !settings) return;   // non sovrascrivere mentre si modifica
+  infoLoaded = true;
+  const seed = await seedP;
+  const info = { ...seed.info, ...(settings.info || {}) };
+  $("#iAddr").value = info.address || "";
+  $("#iMaps").value = info.mapsQuery || "";
+  $("#iPhone").value = info.phone || "";
+  $("#iRating").value = info.googleRating ?? "";
+  $("#iCount").value = info.googleCount ?? "";
+  $("#iGUrl").value = info.googleUrl || "";
+  revs = structuredClone(settings.reviews || seed.reviews || []);
+  drawRevs();
+}
+function drawRevs() {
+  $("#revList").innerHTML = revs.map((r, i) => `
+    <div class="rev" data-i="${i}">
+      <div class="row">
+        <label>Nome<input data-k="author" value="${esc(r.author)}"></label>
+        <label class="rate">Stelle<select data-k="rating">${[5, 4, 3, 2, 1].map((n) => `<option ${n == r.rating ? "selected" : ""}>${n}</option>`).join("")}</select></label>
+        <button type="button" class="btn danger sm del">✕</button>
+      </div>
+      <label>Testo<textarea data-k="text" rows="3">${esc(r.text)}</textarea></label>
+    </div>`).join("") || `<p class="hint">Nessuna recensione.</p>`;
+}
+$("#revList").addEventListener("input", (e) => {
+  const k = e.target.dataset.k, i = e.target.closest(".rev")?.dataset.i;
+  if (k && i != null) revs[i][k] = k === "rating" ? Number(e.target.value) : e.target.value;
+});
+$("#revList").addEventListener("click", (e) => {
+  if (!e.target.classList.contains("del")) return;
+  revs.splice(Number(e.target.closest(".rev").dataset.i), 1);
+  drawRevs();
+});
+$("#addRev").addEventListener("click", () => { revs.unshift({ author: "", rating: 5, text: "" }); drawRevs(); });
+$("#saveInfo").addEventListener("click", async () => {
+  const info = {
+    address: $("#iAddr").value.trim(), mapsQuery: $("#iMaps").value.trim(), phone: $("#iPhone").value.trim(),
+    googleRating: parseFloat($("#iRating").value) || 0, googleCount: parseInt($("#iCount").value, 10) || 0,
+    googleUrl: $("#iGUrl").value.trim()
+  };
+  const reviews = revs.filter((r) => r.text?.trim()).map((r) => ({ author: r.author.trim(), rating: r.rating || 5, text: r.text.trim() }));
+  try { await setDoc(doc(db, "settings", "general"), { info, reviews }, { merge: true }); toast("Info salvate ✔"); }
+  catch (err) { toast("Errore: " + err.code); }
+});
+
+// ---------- IMPORT NOVITÀ (caratteristiche, info, recensioni) su database già popolato ----------
+$("#v2Btn").addEventListener("click", async () => {
+  $("#v2Btn").disabled = true;
+  try {
+    const seed = await seedP;
+    const batch = writeBatch(db);
+    const ids = new Set(products.map((p) => p.id));
+    seed.products.forEach((p) => {
+      if (ids.has(p.id) && p.tags.length) batch.update(doc(db, "products", p.id), { tags: p.tags });
+    });
+    batch.set(doc(db, "settings", "general"), {
+      info: settings?.info || seed.info, reviews: settings?.reviews || seed.reviews, v2: true
+    }, { merge: true });
+    await batch.commit();
+    infoLoaded = false;
+    toast("Importazione completata ✔");
+  } catch (err) { console.error(err); toast("Errore: " + (err.code || err.message)); }
+  $("#v2Btn").disabled = false;
 });

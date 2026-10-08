@@ -255,7 +255,7 @@ body {
 
 /* ---------- FOOTER ---------- */
 .foot { max-width: 760px; margin: 0 auto; padding: 10px 16px 60px; text-align: center; color: var(--muted); }
-.notes { display: grid; gap: 8px; margin-bottom: 26px; }
+.notes { display: grid; gap: 8px; }
 .note {
   padding: 12px 14px; border-radius: 12px; border: 1px dashed var(--line); background: rgba(0,0,0,.2);
   font-family: "Oswald", sans-serif; letter-spacing: .03em; color: var(--cream);
@@ -286,6 +286,79 @@ body {
 .modal-price { display: inline-block; }
 @keyframes sheet { from { transform: translateY(100%); } to { transform: none; } }
 @keyframes fadeIn { from { opacity: 0; } }
+
+
+/* ---------- TAG PRODOTTO ---------- */
+.item-foot { align-items: center; gap: 8px; }
+.tags { margin-right: auto; display: flex; gap: 4px; }
+.tags i { font-style: normal; font-size: 14px; width: 26px; height: 26px; display: grid; place-items: center;
+  border-radius: 50%; background: rgba(0,0,0,.3); border: 1px solid var(--line); }
+.m-tags { margin: -4px 0 16px; }
+.m-tags div { display: flex; flex-wrap: wrap; gap: 6px; }
+.m-tags span { font: 500 13px "Oswald", sans-serif; letter-spacing: .03em; padding: 5px 10px; border-radius: 999px;
+  background: rgba(0,0,0,.3); border: 1px solid var(--line); }
+.m-tags .al { border-color: rgba(220, 80, 60, .5); }
+.m-label { font: 600 12px "Oswald", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 12px 0 6px !important; }
+
+/* ---------- SEZIONI EXTRA ---------- */
+.extra { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.extra .notes { margin: 0 0 10px; }
+.xsec { margin-top: 56px; }
+.xbtns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+.btn-gold, .btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 12px 20px; border-radius: 999px;
+  font: 600 14px "Oswald", sans-serif; letter-spacing: .1em; text-transform: uppercase;
+}
+.btn-gold { color: #2a0d06; background: linear-gradient(180deg, var(--gold-hi), var(--gold) 60%, var(--gold-dk)); box-shadow: 0 4px 0 #6b3a0c; }
+.btn-ghost { color: var(--gold); border: 1px solid var(--gold-dk); background: rgba(0,0,0,.25); }
+.btn-gold:active, .btn-ghost:active { transform: translateY(3px); }
+
+.rating { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 18px; }
+.rating-num { font: 400 58px/1 "Rye", serif; color: var(--gold-hi); text-shadow: 0 3px 0 #3a1205, 0 0 24px rgba(255,160,60,.4); }
+.rating-sub { font-size: 13px; color: var(--muted); }
+.stars span { color: rgba(255,255,255,.18); }
+.stars .on { color: var(--gold); }
+.stars .half { background: linear-gradient(90deg, var(--gold) 50%, rgba(255,255,255,.18) 50%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.stars.big { font-size: 24px; letter-spacing: 2px; }
+
+.reviews { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 16px 14px;
+  margin: 0 -16px; scrollbar-width: none; }
+.reviews::-webkit-scrollbar { display: none; }
+.review { flex: 0 0 min(84%, 340px); scroll-snap-align: center; margin: 0; padding: 18px; border-radius: var(--radius);
+  background: var(--card); border: 1px solid rgba(242,183,60,.18); position: relative; display: flex; flex-direction: column;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+.review::before { content: "“"; position: absolute; top: -8px; right: 14px; font: 90px/1 "Rye", serif; color: rgba(242,183,60,.15); }
+.review blockquote { margin: 10px 0 14px; font-style: italic; font-size: 15px; color: var(--cream); flex: 1; }
+.review figcaption { display: flex; align-items: center; gap: 10px; font: 600 14px "Oswald", sans-serif; letter-spacing: .04em; }
+.review figcaption small { margin-left: auto; font: 12px "Lora", serif; color: var(--muted); }
+.avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #2a0d06;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold-dk)); }
+
+.where { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--card); box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+.map { position: relative; aspect-ratio: 16/11; background: #140603; }
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: sepia(.35) saturate(1.1) brightness(.9); }
+.where-body { padding: 18px; text-align: center; }
+.addr { margin: 0; font-size: 16px; }
+.addr b { font: 400 20px "Rye", serif; color: var(--gold); }
+.addr a { color: var(--gold-hi); }
+.where .xbtns { margin-top: 14px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 16px; }
+.legend span { font: 500 12.5px "Oswald", sans-serif; letter-spacing: .03em; padding: 5px 10px; border-radius: 999px;
+  background: rgba(0,0,0,.3); border: 1px solid var(--line); color: var(--muted); }
+.allergens-list { display: grid; gap: 8px; }
+@media (min-width: 640px) { .allergens-list { grid-template-columns: 1fr 1fr; } }
+.allergen { border-radius: 12px; background: var(--card); border: 1px solid rgba(242,183,60,.14); }
+.allergen summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+  font: 500 15px "Oswald", sans-serif; letter-spacing: .03em; }
+.allergen summary::-webkit-details-marker { display: none; }
+.allergen summary::after { content: "+"; margin-left: auto; color: var(--gold); font-size: 20px; transition: transform .25s; }
+.allergen[open] summary::after { transform: rotate(45deg); }
+.a-ico { font-size: 20px; }
+.a-num { font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--gold-dk); color: #2a0d06; font-weight: 700; }
+.allergen p { margin: 0; padding: 0 14px 14px 44px; font-size: 13.5px; color: var(--muted); }
+.foot { padding-top: 40px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition: none !important; }

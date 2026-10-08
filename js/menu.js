@@ -1,4 +1,4 @@
-import { loadMenu, formatPrice } from "./firebase.js";
+import { loadMenu, formatPrice, TAGS } from "./firebase.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -35,6 +35,11 @@ for (let i = 0; i < 22; i++) {
 let data;
 const productsById = new Map();
 
+const tagIcons = (p) => {
+  const t = (p.tags || []).filter((k) => TAGS[k]);
+  return t.length ? `<span class="tags">${t.map((k) => `<i title="${esc(TAGS[k].label)}">${TAGS[k].icon}</i>`).join("")}</span>` : "";
+};
+
 function itemHTML(p) {
   const img = p.image
     ? `<div class="item-img"><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" decoding="async"></div>`
@@ -46,7 +51,7 @@ function itemHTML(p) {
     <div class="item-body">
       <h3 class="item-name">${esc(p.name)}</h3>
       ${p.description ? `<p class="item-desc">${esc(p.description)}</p>` : ""}
-      <div class="item-foot"><span class="price">${formatPrice(p.price)}</span></div>
+      <div class="item-foot">${tagIcons(p)}<span class="price">${formatPrice(p.price)}</span></div>
     </div>
   </article>`;
 }
@@ -73,6 +78,7 @@ function render(filter = "") {
     </section>`;
   }
   menu.innerHTML = html || `<p class="empty">Nessun prodotto trovato 🐺</p>`;
+  document.querySelector(".extra").hidden = !!q;
   observeReveal();
   observeSections();
 }
@@ -81,7 +87,62 @@ function renderChips() {
   $("#chips").innerHTML = data.categories
     .filter((c) => c.visible !== false && data.products.some((p) => p.categoryId === c.id && p.visible !== false))
     .map((c) => `<a class="chip" href="#cat-${esc(c.id)}" data-cat="${esc(c.id)}">${esc(c.name)}</a>`)
-    .join("");
+    .join("") +
+    `<a class="chip" href="#cat-recensioni" data-cat="recensioni">⭐ Recensioni</a>` +
+    `<a class="chip" href="#cat-dove-siamo" data-cat="dove-siamo">📍 Dove siamo</a>` +
+    `<a class="chip" href="#cat-allergeni" data-cat="allergeni">Allergeni</a>`;
+}
+
+const stars = (n) => {
+  const r = Math.round(n * 2) / 2;
+  return [1, 2, 3, 4, 5].map((i) => `<span class="${i <= r ? "on" : i - 0.5 === r ? "half" : ""}">★</span>`).join("");
+};
+
+function renderExtra() {
+  const info = data.info || {};
+  // Recensioni
+  if (info.googleRating) {
+    $("#rating").innerHTML = `<div class="rating-num">${String(info.googleRating).replace(".", ",")}</div>
+      <div><div class="stars big">${stars(info.googleRating)}</div>
+      <div class="rating-sub">${info.googleCount || ""} recensioni su <b>Google</b></div></div>`;
+  }
+  $("#reviews").innerHTML = (data.reviews || []).map((r) => `
+    <figure class="review">
+      <div class="stars">${stars(r.rating || 5)}</div>
+      <blockquote>“${esc(r.text)}”</blockquote>
+      <figcaption><span class="avatar">${esc((r.author || "?")[0])}</span>${esc(r.author || "")}<small>via Google</small></figcaption>
+    </figure>`).join("");
+  $("#gReviews").href = info.googleUrl || "#";
+  // Dove siamo
+  const q = encodeURIComponent(info.mapsQuery || info.address || "");
+  $("#map").src = `https://maps.google.com/maps?q=${q}&z=16&output=embed`;
+  $("#addr").innerHTML = `<b>La Tana del Lupo</b><br>${esc(info.address || "")}${info.phone ? `<br><a href="tel:${esc(info.phone.replace(/\s/g, ""))}">${esc(info.phone)}</a>` : ""}`;
+  $("#directions").href = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
+  $("#call").href = `tel:${(info.phone || "").replace(/\s/g, "")}`;
+  $("#call").hidden = !info.phone;
+  // Allergeni
+  $("#legend").innerHTML = Object.values(TAGS).map((t) => `<span>${t.icon} ${esc(t.label)}</span>`).join("");
+  $("#allergens").innerHTML = (data.allergens || []).map((a, i) => `
+    <details class="allergen reveal">
+      <summary><span class="a-ico">${a.icon}</span><span class="a-num">${i + 1}</span>${esc(a.name)}</summary>
+      <p>${esc(a.description)}</p>
+    </details>`).join("");
+  autoScrollReviews();
+}
+
+// carosello recensioni con scorrimento automatico (si ferma al tocco)
+function autoScrollReviews() {
+  const box = $("#reviews");
+  let paused = false, timer;
+  ["pointerdown", "touchstart", "wheel"].forEach((ev) => box.addEventListener(ev, () => {
+    paused = true; clearTimeout(timer); timer = setTimeout(() => (paused = false), 6000);
+  }, { passive: true }));
+  setInterval(() => {
+    if (paused || !box.children.length) return;
+    const card = box.children[0].getBoundingClientRect().width + 14;
+    const end = box.scrollLeft + box.clientWidth >= box.scrollWidth - 4;
+    box.scrollTo({ left: end ? 0 : box.scrollLeft + card, behavior: "smooth" });
+  }, 4500);
 }
 
 function renderNotes() {
@@ -136,6 +197,11 @@ document.addEventListener("click", (e) => {
     $("#mImg").innerHTML = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}">` : "";
     $("#mName").textContent = p.name;
     $("#mDesc").textContent = p.description || "";
+    const tg = (p.tags || []).filter((k) => TAGS[k]).map((k) => `<span>${TAGS[k].icon} ${esc(TAGS[k].label)}</span>`);
+    const al = (p.allergens || []).map((id) => data.allergens?.find((a) => a.id === id)).filter(Boolean)
+      .map((a) => `<span class="al">${a.icon} ${esc(a.name)}</span>`);
+    $("#mTags").innerHTML = (tg.length ? `<div>${tg.join("")}</div>` : "") +
+      (al.length ? `<p class="m-label">Allergeni</p><div>${al.join("")}</div>` : "");
     $("#mPrice").innerHTML = `<span class="price">${formatPrice(p.price)}</span>`;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
@@ -161,4 +227,6 @@ data.products.forEach((p) => productsById.set(p.id, p));
 renderChips();
 render();
 renderNotes();
+renderExtra();
 observeReveal();
+observeSections();
