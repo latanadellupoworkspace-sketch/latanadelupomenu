@@ -42,17 +42,21 @@ body {
   overflow: hidden; isolation: isolate; padding: 48px 16px 40px;
 }
 .hero-bg {
-  position: absolute; inset: -30px; background-size: cover; background-position: center;
-  filter: blur(18px) saturate(1.2) brightness(.42); transform: scale(1.15);
-  animation: slowzoom 24s ease-in-out infinite alternate; z-index: -3;
+  position: absolute; inset: 0; z-index: -3;
+  background: url("/img/hero-foto-mobile.webp") center 30% / cover no-repeat;
+  filter: saturate(1.1) brightness(.78);
+  animation: slowzoom 24s ease-in-out infinite alternate;
+}
+@media (min-aspect-ratio: 4/5) {
+  .hero-bg { background-image: url("/img/hero-foto.webp"); background-position: center 35%; }
 }
 .hero-shade {
   position: absolute; inset: 0; z-index: -2;
   background:
-    radial-gradient(60% 45% at 50% 42%, rgba(255, 170, 70, .18), transparent 70%),
-    linear-gradient(180deg, rgba(26,9,5,.55) 0%, rgba(26,9,5,.25) 30%, rgba(26,9,5,.45) 65%, var(--bg) 100%);
+    radial-gradient(75% 45% at 50% 50%, rgba(26,9,5,.55), transparent 75%),
+    linear-gradient(180deg, rgba(26,9,5,.35) 0%, rgba(26,9,5,.1) 30%, rgba(26,9,5,.35) 70%, var(--bg) 100%);
 }
-@keyframes slowzoom { to { transform: scale(1.16) translateY(-8px); } }
+@keyframes slowzoom { from { transform: scale(1); } to { transform: scale(1.08); } }
 
 .lantern {
   position: absolute; width: 220px; height: 220px; border-radius: 50%; z-index: -1;
@@ -80,20 +84,6 @@ body {
   100% { transform: translate(var(--dx, 20px), -100svh); opacity: 0; }
 }
 
-.hero-photo {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: -1;
-  width: min(100%, 1100px); aspect-ratio: 3 / 1; max-height: 46svh;
-  background-size: cover; background-position: center;
-  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
-  animation: photoIn 1.4s ease-out both;
-}
-.hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,9,5,.1), rgba(26,9,5,.35)); }
-@media (min-width: 1100px) {
-  .hero-photo { -webkit-mask-image: radial-gradient(70% 100% at 50% 0, #000 60%, transparent 100%); mask-image: radial-gradient(70% 100% at 50% 0, #000 60%, transparent 100%); }
-}
-@keyframes photoIn { from { opacity: 0; transform: translateX(-50%) scale(1.08); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
-.hero { padding-top: calc(min(33.3vw, 46svh, 366px) - 18px); align-items: start; }
 .hero-inner { text-align: center; width: 100%; max-width: 560px; }
 .hero-kicker {
   font-family: "Oswald", sans-serif; letter-spacing: .32em; text-transform: uppercase;
