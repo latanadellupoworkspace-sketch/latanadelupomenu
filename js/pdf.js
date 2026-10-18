@@ -1,5 +1,5 @@
 // Generazione PDF del menu (lato client, con jsPDF) a partire dai dati attuali del database.
-import { TAGS } from "./firebase.js";
+import { TAGS, visibleTags, isFrozen, displayName } from "./firebase.js";
 
 const JSPDF_URL = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
 
@@ -183,10 +183,10 @@ export async function generateMenuPdf({ categories, products, settings = {}, see
       const pw = doc.getTextWidth(price);
       const tw = W - M - tx - pw - 5;
       doc.setFontSize(10.5);
-      const nameL = doc.splitTextToSize(clean(p.name).toUpperCase(), tw);
+      const nameL = doc.splitTextToSize(clean(displayName(p)).toUpperCase(), tw);
       doc.setFont("helvetica", "normal"); doc.setFontSize(8.5);
       const descL = p.description ? doc.splitTextToSize(clean(p.description), W - M - tx) : [];
-      const tagTxt = (p.tags || []).filter((k) => TAGS[k]).map((k) => TAGS[k].label).join(" · ");
+      const tagTxt = visibleTags(p).map((k) => TAGS[k].label).join(" · ");
       const algTxt = (p.allergens || []).map((id) => allergens.find((a) => a.id === id)?.name).filter(Boolean).join(", ");
       const extra = [tagTxt, algTxt ? "Allergeni: " + algTxt : ""].filter(Boolean);
       const textH = nameL.length * 4.6 + descL.length * 3.7 + extra.length * 3.5;
@@ -219,6 +219,12 @@ export async function generateMenuPdf({ categories, products, settings = {}, see
       if (algTxt) { doc.setTextColor(...C.red); doc.text("Allergeni: " + algTxt, tx, ty); ty += 3.5; }
       y += h;
     }
+    if (items.some(isFrozen)) {
+      ensure(6);
+      doc.setFont("helvetica", "italic"); doc.setFontSize(7.5); doc.setTextColor(...C.muted);
+      doc.text("* Prodotto surgelato", W - M, y + 1, { align: "right" });
+      y += 4;
+    }
     y += 4;
   }
 
@@ -240,7 +246,7 @@ export async function generateMenuPdf({ categories, products, settings = {}, see
   Object.values(TAGS).forEach((t, i) => {
     const col = i % 2, cx = M + 4 + col * (CW / 2);
     if (col === 0) ensure(6);
-    doc.text("•  " + t.label, cx, y);
+    doc.text((t.asterisk ? "*  " : "•  ") + t.label, cx, y);
     if (col === 1 || i === Object.values(TAGS).length - 1) y += 5.5;
   });
 

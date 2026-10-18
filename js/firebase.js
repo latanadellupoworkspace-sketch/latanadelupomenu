@@ -21,13 +21,20 @@ export const formatPrice = (n) =>
 
 // Caratteristiche prodotto (importate da leggimenu + gestibili da admin)
 export const TAGS = {
-  "surgelato": { icon: "❄️", label: "Contiene prodotti surgelati" },
+  // surgelato: niente icona in evidenza, solo un asterisco accanto al nome (nota "* Prodotto surgelato")
+  "surgelato": { icon: "*", label: "Prodotto surgelato", asterisk: true },
   "abbattuto": { icon: "🧊", label: "Contiene prodotti abbattuti" },
   "piccante": { icon: "🌶️", label: "Piccante" },
   "senza-glutine": { icon: "🌾", label: "Senza glutine" },
   "senza-lattosio": { icon: "🥛", label: "Senza lattosio" },
   "vegetariano": { icon: "🥦", label: "Vegetariano" }
 };
+
+// Caratteristiche da mostrare come icona/etichetta (escluse quelle ad asterisco)
+export const visibleTags = (p) => (p.tags || []).filter((k) => TAGS[k] && !TAGS[k].asterisk);
+export const isFrozen = (p) => (p.tags || []).includes("surgelato");
+// Nome con asterisco se surgelato (senza duplicarlo se è già nel nome)
+export const displayName = (p) => (isFrozen(p) && !/\*\s*$/.test(p.name || "") ? `${p.name} *` : p.name || "");
 
 export const fetchSeed = () => fetch("/seed.json").then((r) => r.json());
 

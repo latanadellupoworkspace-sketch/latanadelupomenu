@@ -1,4 +1,4 @@
-import { loadMenu, formatPrice, TAGS } from "./firebase.js";
+import { loadMenu, formatPrice, TAGS, visibleTags, isFrozen, displayName } from "./firebase.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -36,7 +36,7 @@ let data;
 const productsById = new Map();
 
 const tagIcons = (p) => {
-  const t = (p.tags || []).filter((k) => TAGS[k]);
+  const t = visibleTags(p);
   return t.length ? `<span class="tags">${t.map((k) => `<i title="${esc(TAGS[k].label)}">${TAGS[k].icon}</i>`).join("")}</span>` : "";
 };
 
@@ -49,7 +49,7 @@ function itemHTML(p) {
     ${off ? '<span class="tag-out">Esaurito</span>' : ""}
     ${img}
     <div class="item-body">
-      <h3 class="item-name">${esc(p.name)}</h3>
+      <h3 class="item-name">${esc(displayName(p))}</h3>
       ${p.description ? `<p class="item-desc">${esc(p.description)}</p>` : ""}
       <div class="item-foot">${tagIcons(p)}<span class="price">${formatPrice(p.price)}</span></div>
     </div>
@@ -75,6 +75,7 @@ function render(filter = "") {
         ${c.description ? `<p class="cat-desc">${esc(c.description)}</p>` : ""}
       </header>
       <div class="items">${items.map(itemHTML).join("")}</div>
+      ${items.some(isFrozen) ? `<p class="footnote">* Prodotto surgelato</p>` : ""}
     </section>`;
   }
   menu.innerHTML = html || `<p class="empty">Nessun prodotto trovato 🐺</p>`;
@@ -195,12 +196,13 @@ document.addEventListener("click", (e) => {
     const p = productsById.get(card.dataset.id);
     if (!p) return;
     $("#mImg").innerHTML = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}">` : "";
-    $("#mName").textContent = p.name;
+    $("#mName").textContent = displayName(p);
     $("#mDesc").textContent = p.description || "";
-    const tg = (p.tags || []).filter((k) => TAGS[k]).map((k) => `<span>${TAGS[k].icon} ${esc(TAGS[k].label)}</span>`);
+    const tg = visibleTags(p).map((k) => `<span>${TAGS[k].icon} ${esc(TAGS[k].label)}</span>`);
     const al = (p.allergens || []).map((id) => data.allergens?.find((a) => a.id === id)).filter(Boolean)
       .map((a) => `<span class="al">${a.icon} ${esc(a.name)}</span>`);
     $("#mTags").innerHTML = (tg.length ? `<div>${tg.join("")}</div>` : "") +
+      (isFrozen(p) ? `<p class="footnote">* Prodotto surgelato</p>` : "") +
       (al.length ? `<p class="m-label">Allergeni</p><div>${al.join("")}</div>` : "");
     $("#mPrice").innerHTML = `<span class="price">${formatPrice(p.price)}</span>`;
     modal.hidden = false;

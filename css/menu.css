@@ -368,3 +368,7 @@ body {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* nota asterisco surgelati, discreta */
+.footnote { margin: 10px 2px 0; font-size: 12px; font-style: italic; color: var(--muted); opacity: .8; text-align: right; }
+.m-tags .footnote { text-align: left; margin-top: 8px; }
