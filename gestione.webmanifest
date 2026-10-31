@@ -1,0 +1,22 @@
+{
+ "name": "Gestione Menu – La Tana del Lupo",
+ "short_name": "Gestione Lupo",
+ "start_url": "/gestione-tana",
+ "scope": "/",
+ "display": "standalone",
+ "background_color": "#1a0905",
+ "theme_color": "#1a0905",
+ "icons": [
+  {
+   "src": "/img/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/img/apple-touch-icon.png",
+   "sizes": "180x180",
+   "type": "image/png"
+  }
+ ]
+}

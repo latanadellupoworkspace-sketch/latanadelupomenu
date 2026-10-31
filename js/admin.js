@@ -1,21 +1,40 @@
-import { app, db, SDK, formatPrice, TAGS, fetchSeed } from "./firebase.js";
-const { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, setPersistence, browserLocalPersistence } =
-  await import(`${SDK}/firebase-auth.js`);
-const { collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, writeBatch, serverTimestamp } =
-  await import(`${SDK}/firebase-firestore.js`);
+// Import statici (niente "await" al primo livello: così funziona anche su tablet/browser meno recenti)
+import { app, db, formatPrice, TAGS, fetchSeed } from "./firebase.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import { collection, doc, onSnapshot, setDoc, addDoc, updateDoc, deleteDoc, writeBatch, serverTimestamp, arrayUnion } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+import { UPDATES } from "./updates.js";
+import { loadEN } from "./i18n.js";
+
+window.__adminLoaded = true;
 
 const $ = (s) => document.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const toast = (msg) => { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 2600); };
 
-const auth = getAuth(app);
-await setPersistence(auth, browserLocalPersistence);
+const auth = getAuth(app);   // il login resta salvato sul dispositivo
+const enP = loadEN();
+
+// ---------- COMPATIBILITÀ ----------
+// <dialog> non supportato (browser vecchi): finestra semplice
+document.querySelectorAll("dialog").forEach((d) => {
+  if (typeof d.showModal !== "function") {
+    d.showModal = () => { d.setAttribute("open", ""); d.classList.add("shim"); document.body.classList.add("dlg-open"); };
+    d.close = () => { d.removeAttribute("open"); document.body.classList.remove("dlg-open"); };
+  }
+});
+// evidenzia le spunte selezionate anche senza il selettore CSS :has
+document.addEventListener("change", (e) => {
+  const l = e.target.closest(".chipset label");
+  if (l) l.classList.toggle("on", e.target.checked);
+});
+const clone = (x) => JSON.parse(JSON.stringify(x));
 
 let categories = [], products = [], unsubs = [], settings = null;
 const seedP = fetchSeed();
 
 // ---------- AUTH ----------
 onAuthStateChanged(auth, (user) => {
+  $("#boot").hidden = true;
   $("#login").hidden = !!user;
   $("#app").hidden = !user;
   unsubs.forEach((u) => u()); unsubs = [];
@@ -28,7 +47,11 @@ $("#loginForm").addEventListener("submit", async (e) => {
   try {
     await signInWithEmailAndPassword(auth, $("#email").value.trim(), $("#password").value);
   } catch (err) {
-    $("#loginErr").textContent = "Credenziali non valide.";
+    const c = err.code || "";
+    $("#loginErr").textContent =
+      c.includes("network") ? "Nessuna connessione a internet. Riprova." :
+      c.includes("too-many") ? "Troppi tentativi: aspetta qualche minuto e riprova." :
+      "Email o password non corrette.";
     console.error(err);
   }
 });
@@ -43,12 +66,14 @@ function startListeners() {
   unsubs.push(onSnapshot(collection(db, "products"), (s) => {
     products = s.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
     renderAll();
+    applyUpdates();
   }));
   unsubs.push(onSnapshot(doc(db, "settings", "general"), (s) => {
     settings = s.data() || {};
     if (document.activeElement !== $("#notesText")) $("#notesText").value = (settings.notes || []).join("\n");
     renderInfo();
     $("#v2Banner").hidden = !categories.length || !!settings.v2;
+    applyUpdates();
   }));
 }
 
@@ -109,15 +134,23 @@ $("#pFilter").addEventListener("change", renderProducts);
 // ---------- TABS ----------
 document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
   document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("active", x === t));
-  ["products", "categories", "notes", "info"].forEach((n) => ($("#tab-" + n).hidden = n !== t.dataset.tab));
+  ["products", "categories", "notes", "info", "guide"].forEach((n) => ($("#tab-" + n).hidden = n !== t.dataset.tab));
 }));
 document.querySelectorAll("[data-cancel]").forEach((b) => b.addEventListener("click", () => b.closest("dialog").close()));
 
 // ---------- IMMAGINI ----------
 // Compressione lato client in WebP e salvataggio come data-URL nel documento Firestore
 // (niente Firebase Storage → nessun piano a pagamento richiesto).
+function loadBitmap(file) {
+  if (window.createImageBitmap) return createImageBitmap(file);
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => res(img); img.onerror = rej;
+    img.src = URL.createObjectURL(file);
+  });
+}
 async function compressImage(file, maxSide = 900) {
-  const bmp = await createImageBitmap(file);
+  const bmp = await loadBitmap(file);
   let side = maxSide, quality = 0.8, out;
   for (let i = 0; i < 6; i++) {
     const scale = Math.min(1, side / Math.max(bmp.width, bmp.height));
@@ -127,7 +160,7 @@ async function compressImage(file, maxSide = 900) {
     c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
     out = c.toDataURL("image/webp", quality);
     if (!out.startsWith("data:image/webp")) out = c.toDataURL("image/jpeg", quality);
-    if (out.length < 350_000) break;
+    if (out.length < 350000) break;
     quality -= 0.1; side = Math.round(side * 0.85);
   }
   return out;
@@ -144,6 +177,13 @@ function openProduct(p) {
   $("#pTitle").textContent = p ? "Modifica prodotto" : "Nuovo prodotto";
   $("#pName").value = p?.name || "";
   $("#pDesc").value = p?.description || "";
+  $("#pNameEn").value = p?.name_en || "";
+  $("#pDescEn").value = p?.description_en || "";
+  enP.then((en) => {   // suggerimento: traduzione già presente
+    const t = p && en.products?.[p.id];
+    $("#pNameEn").placeholder = t?.name || "Se vuoto resta in italiano";
+    $("#pDescEn").placeholder = t?.description || "";
+  });
   $("#pPrice").value = p?.price ?? "";
   $("#pCat").value = p?.categoryId || $("#pFilter").value || categories[0]?.id || "";
   const sameCat = products.filter((x) => x.categoryId === $("#pCat").value);
@@ -151,7 +191,7 @@ function openProduct(p) {
   $("#pAvail").checked = p?.available !== false;
   $("#pVisible").checked = p?.visible !== false;
   $("#pDelete").hidden = !p;
-  const chk = (name, val, on, txt) => `<label><input type="checkbox" name="${name}" value="${val}" ${on ? "checked" : ""}>${txt}</label>`;
+  const chk = (name, val, on, txt) => `<label class="${on ? "on" : ""}"><input type="checkbox" name="${name}" value="${val}" ${on ? "checked" : ""}>${txt}</label>`;
   $("#pTags").innerHTML = Object.entries(TAGS).map(([k, t]) => chk("tag", k, p?.tags?.includes(k), `${t.icon} ${t.label}`)).join("");
   seedP.then((seed) => {
     $("#pAllergens").innerHTML = seed.allergens.map((a) => chk("alg", a.id, p?.allergens?.includes(a.id), `${a.icon} ${a.name}`)).join("");
@@ -181,6 +221,8 @@ $("#pForm").addEventListener("submit", async (e) => {
   const data = {
     name: $("#pName").value.trim(),
     description: $("#pDesc").value.trim(),
+    name_en: $("#pNameEn").value.trim(),
+    description_en: $("#pDescEn").value.trim(),
     price: Math.round(parseFloat(String($("#pPrice").value).replace(",", ".")) * 100) / 100 || 0,
     categoryId: $("#pCat").value,
     order: parseInt($("#pOrder").value, 10) || 0,
@@ -287,7 +329,7 @@ async function renderInfo() {
   $("#iRating").value = info.googleRating ?? "";
   $("#iCount").value = info.googleCount ?? "";
   $("#iGUrl").value = info.googleUrl || "";
-  revs = structuredClone(settings.reviews || seed.reviews || []);
+  revs = clone(settings.reviews || seed.reviews || []);
   drawRevs();
 }
 function drawRevs() {
@@ -344,17 +386,46 @@ $("#v2Btn").addEventListener("click", async () => {
 
 // ---------- PDF ----------
 // Generato al momento dai dati attuali: ogni modifica al menu è subito inclusa nel PDF.
-$("#pdfBtn").addEventListener("click", async () => {
-  const btn = $("#pdfBtn");
+document.querySelectorAll("[data-pdf]").forEach((btn) => btn.addEventListener("click", async () => {
+  const label = btn.textContent;
   btn.disabled = true;
   try {
     const { generateMenuPdf } = await import("./pdf.js");
     const name = await generateMenuPdf({
-      categories, products, settings: settings || {}, seed: await seedP,
-      onProgress: (m) => (btn.textContent = m.length > 22 ? m.slice(0, 22) + "…" : m)
+      categories, products, settings: settings || {}, seed: await seedP, lang: btn.dataset.pdf,
+      onProgress: (m) => (btn.textContent = m.length > 18 ? m.slice(0, 18) + "…" : m)
     });
     toast("PDF scaricato ✔ " + name);
   } catch (err) { console.error(err); toast("Errore PDF: " + err.message); }
-  btn.textContent = "📄 PDF";
+  btn.textContent = label;
   btn.disabled = false;
-});
+}));
+
+// ---------- AGGIORNAMENTI PREPARATI DA IVAN ----------
+// Le modifiche in js/updates.js vengono applicate una sola volta, da sole, al primo accesso.
+let applying = false;
+async function applyUpdates() {
+  if (applying || !settings || !products.length) return;
+  const done = new Set(settings.appliedUpdates || []);
+  const todo = UPDATES.filter((u) => !done.has(u.id));
+  if (!todo.length) return;
+  applying = true;
+  try {
+    const batch = writeBatch(db);
+    const names = new Set(products.map((p) => (p.name || "").trim().toLowerCase()));
+    const ids = new Set(products.map((p) => p.id));
+    const added = [];
+    for (const u of todo) {
+      for (const p of u.add || []) {
+        // salta se il prodotto esiste già (stesso id o stesso nome)
+        if (ids.has(p.id) || names.has(p.data.name.trim().toLowerCase())) continue;
+        batch.set(doc(db, "products", p.id), { ...p.data, updatedAt: serverTimestamp() });
+        added.push(p.data.name);
+      }
+    }
+    batch.set(doc(db, "settings", "general"), { appliedUpdates: arrayUnion(...todo.map((u) => u.id)) }, { merge: true });
+    await batch.commit();
+    if (added.length) toast("Aggiunti al menu: " + added.join(" • "));
+  } catch (err) { console.error(err); toast("Errore aggiornamento: " + (err.code || err.message)); applying = false; return; }
+  applying = false;
+}

@@ -1,4 +1,5 @@
 import { loadMenu, formatPrice, TAGS, visibleTags, isFrozen, displayName } from "./firebase.js";
+import { loadEN, initialLang, saveLang, ui, tagLabel, localize } from "./i18n.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -32,12 +33,12 @@ for (let i = 0; i < 22; i++) {
 }
 
 // --- Rendering menu ---
-let data;
+let raw, data, lang = initialLang();
 const productsById = new Map();
 
 const tagIcons = (p) => {
   const t = visibleTags(p);
-  return t.length ? `<span class="tags">${t.map((k) => `<i title="${esc(TAGS[k].label)}">${TAGS[k].icon}</i>`).join("")}</span>` : "";
+  return t.length ? `<span class="tags">${t.map((k) => `<i title="${esc(tagLabel(lang, k))}">${TAGS[k].icon}</i>`).join("")}</span>` : "";
 };
 
 function itemHTML(p) {
@@ -46,7 +47,7 @@ function itemHTML(p) {
     : "";
   const off = p.available === false;
   return `<article class="item reveal ${p.image ? "" : "no-img"} ${off ? "unavailable" : ""}" data-id="${esc(p.id)}">
-    ${off ? '<span class="tag-out">Esaurito</span>' : ""}
+    ${off ? `<span class="tag-out">${ui(lang, "soldOut")}</span>` : ""}
     ${img}
     <div class="item-body">
       <h3 class="item-name">${esc(displayName(p))}</h3>
@@ -75,10 +76,10 @@ function render(filter = "") {
         ${c.description ? `<p class="cat-desc">${esc(c.description)}</p>` : ""}
       </header>
       <div class="items">${items.map(itemHTML).join("")}</div>
-      ${items.some(isFrozen) ? `<p class="footnote">* Prodotto surgelato</p>` : ""}
+      ${items.some(isFrozen) ? `<p class="footnote">${ui(lang, "frozenNote")}</p>` : ""}
     </section>`;
   }
-  menu.innerHTML = html || `<p class="empty">Nessun prodotto trovato 🐺</p>`;
+  menu.innerHTML = html || `<p class="empty">${ui(lang, "empty")}</p>`;
   document.querySelector(".extra").hidden = !!q;
   observeReveal();
   observeSections();
@@ -89,9 +90,9 @@ function renderChips() {
     .filter((c) => c.visible !== false && data.products.some((p) => p.categoryId === c.id && p.visible !== false))
     .map((c) => `<a class="chip" href="#cat-${esc(c.id)}" data-cat="${esc(c.id)}">${esc(c.name)}</a>`)
     .join("") +
-    `<a class="chip" href="#cat-recensioni" data-cat="recensioni">⭐ Recensioni</a>` +
-    `<a class="chip" href="#cat-dove-siamo" data-cat="dove-siamo">📍 Dove siamo</a>` +
-    `<a class="chip" href="#cat-allergeni" data-cat="allergeni">Allergeni</a>`;
+    `<a class="chip" href="#cat-recensioni" data-cat="recensioni">${ui(lang, "reviewsChip")}</a>` +
+    `<a class="chip" href="#cat-dove-siamo" data-cat="dove-siamo">${ui(lang, "whereChip")}</a>` +
+    `<a class="chip" href="#cat-allergeni" data-cat="allergeni">${ui(lang, "allergensChip")}</a>`;
 }
 
 const stars = (n) => {
@@ -105,7 +106,7 @@ function renderExtra() {
   if (info.googleRating) {
     $("#rating").innerHTML = `<div class="rating-num">${String(info.googleRating).replace(".", ",")}</div>
       <div><div class="stars big">${stars(info.googleRating)}</div>
-      <div class="rating-sub">${info.googleCount || ""} recensioni su <b>Google</b></div></div>`;
+      <div class="rating-sub">${info.googleCount || ""} ${ui(lang, "reviewsOn")} <b>Google</b></div></div>`;
   }
   $("#reviews").innerHTML = (data.reviews || []).map((r) => `
     <figure class="review">
@@ -122,14 +123,15 @@ function renderExtra() {
   $("#call").href = `tel:${(info.phone || "").replace(/\s/g, "")}`;
   $("#call").hidden = !info.phone;
   // Allergeni
-  $("#legend").innerHTML = Object.values(TAGS).map((t) => `<span>${t.icon} ${esc(t.label)}</span>`).join("");
+  $("#legend").innerHTML = Object.entries(TAGS).map(([k, t]) => `<span>${t.icon} ${esc(tagLabel(lang, k))}</span>`).join("");
   $("#allergens").innerHTML = (data.allergens || []).map((a, i) => `
     <details class="allergen reveal">
       <summary><span class="a-ico">${a.icon}</span><span class="a-num">${i + 1}</span>${esc(a.name)}</summary>
       <p>${esc(a.description)}</p>
     </details>`).join("");
-  autoScrollReviews();
+  if (!autoScrollStarted) { autoScrollStarted = true; autoScrollReviews(); }
 }
+let autoScrollStarted = false;
 
 // carosello recensioni con scorrimento automatico (si ferma al tocco)
 function autoScrollReviews() {
@@ -198,12 +200,12 @@ document.addEventListener("click", (e) => {
     $("#mImg").innerHTML = p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}">` : "";
     $("#mName").textContent = displayName(p);
     $("#mDesc").textContent = p.description || "";
-    const tg = visibleTags(p).map((k) => `<span>${TAGS[k].icon} ${esc(TAGS[k].label)}</span>`);
+    const tg = visibleTags(p).map((k) => `<span>${TAGS[k].icon} ${esc(tagLabel(lang, k))}</span>`);
     const al = (p.allergens || []).map((id) => data.allergens?.find((a) => a.id === id)).filter(Boolean)
       .map((a) => `<span class="al">${a.icon} ${esc(a.name)}</span>`);
     $("#mTags").innerHTML = (tg.length ? `<div>${tg.join("")}</div>` : "") +
-      (isFrozen(p) ? `<p class="footnote">* Prodotto surgelato</p>` : "") +
-      (al.length ? `<p class="m-label">Allergeni</p><div>${al.join("")}</div>` : "");
+      (isFrozen(p) ? `<p class="footnote">${ui(lang, "frozenNote")}</p>` : "") +
+      (al.length ? `<p class="m-label">${ui(lang, "allergensLabel")}</p><div>${al.join("")}</div>` : "");
     $("#mPrice").innerHTML = `<span class="price">${formatPrice(p.price)}</span>`;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
@@ -223,12 +225,58 @@ $("#searchBtn").addEventListener("click", () => {
 let t;
 $("#q").addEventListener("input", (e) => { clearTimeout(t); t = setTimeout(() => render(e.target.value), 150); });
 
+// --- Lingua (IT / EN) ---
+// I testi fissi della pagina hanno data-i18n="chiave": salviamo l'italiano e lo sostituiamo con en.json
+const staticIT = new Map();
+function applyStaticTexts() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const k = el.dataset.i18n;
+    if (!staticIT.has(el)) staticIT.set(el, el.innerHTML);
+    const en = lang === "en" ? EN_UI()?.[k] : null;
+    if (k === "tags") {
+      const list = lang === "en" ? EN_UI()?.tags : null;
+      el.innerHTML = list ? list.map((x) => `<span>${esc(x)}</span>`).join("") : staticIT.get(el);
+    } else if (k === "cta") {
+      el.innerHTML = en ? `${esc(en)} <span>↓</span>` : staticIT.get(el);
+    } else el.innerHTML = en ? esc(en) : staticIT.get(el);
+  });
+  const q = $("#q");
+  q.placeholder = lang === "en" ? EN_UI()?.search || q.placeholder : "Cerca nel menu… (es. bacon, IPA)";
+  $("#langBtn").innerHTML = lang === "en" ? "🇮🇹 IT" : "🇬🇧 EN";
+  $("#langBtn").setAttribute("aria-label", lang === "en" ? "Passa all'italiano" : "Switch to English");
+}
+let enData = null;
+const EN_UI = () => enData?.ui;
+
+function renderAll() {
+  data = localize(raw, lang);
+  productsById.clear();
+  data.products.forEach((p) => productsById.set(p.id, p));
+  applyStaticTexts();
+  renderChips();
+  render($("#q").value || "");
+  renderNotes();
+  renderExtra();
+  observeReveal();
+  observeSections();
+}
+
+$("#langBtn").addEventListener("click", async () => {
+  lang = lang === "en" ? "it" : "en";
+  saveLang(lang);
+  if (lang === "en") enData = await loadEN();
+  const y = scrollY;
+  renderAll();
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+  scrollTo(0, y);
+});
+
 // --- Avvio ---
-data = await loadMenu();
-data.products.forEach((p) => productsById.set(p.id, p));
-renderChips();
-render();
-renderNotes();
-renderExtra();
-observeReveal();
-observeSections();
+Promise.all([loadMenu(), loadEN()]).then(([menuData, en]) => {
+  raw = menuData; enData = en;
+  renderAll();
+}).catch((err) => {
+  console.error(err);
+  $("#menu").innerHTML = `<p class="empty">Impossibile caricare il menu. Controlla la connessione e ricarica la pagina.</p>`;
+});

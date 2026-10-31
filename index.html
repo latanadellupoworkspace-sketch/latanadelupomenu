@@ -27,7 +27,7 @@
     <div class="embers" aria-hidden="true"></div>
 
     <div class="hero-inner">
-      <p class="hero-kicker">Pub · Birreria · Vairano Scalo</p>
+      <p class="hero-kicker" data-i18n="kicker">Pub · Birreria · Vairano Scalo</p>
       <h1 class="hero-title" aria-label="La Tana del Lupo">
         <span class="arc">
           <span>L</span><span>a</span><span class="gap"></span><span>T</span><span>a</span><span>n</span><span>a</span>
@@ -39,10 +39,10 @@
       <div class="hero-badge">
         <img src="/img/hero.webp" alt="Il lupo della Tana" width="800" height="800">
       </div>
-      <div class="hero-tags">
+      <div class="hero-tags" data-i18n="tags">
         <span>🍔 Smash Burger</span><span>🍺 Birre Selezionate</span><span>🌮 Panini Gourmet</span>
       </div>
-      <a href="#menu" class="hero-cta">Sfoglia il menu <span>↓</span></a>
+      <a href="#menu" class="hero-cta" data-i18n="cta">Sfoglia il menu <span>↓</span></a>
     </div>
   </header>
 
@@ -51,6 +51,7 @@
       <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
     </button>
     <div class="chips" id="chips"></div>
+    <button class="lang-btn" id="langBtn" type="button">🇬🇧 EN</button>
   </nav>
 
   <div class="searchbox" id="searchbox" hidden>
@@ -58,7 +59,7 @@
   </div>
 
   <main id="menu" class="menu">
-    <div class="loader" id="loader"><div class="paw"></div><p>Il lupo sta preparando il menu…</p></div>
+    <div class="loader" id="loader"><div class="paw"></div><p data-i18n="loading">Il lupo sta preparando il menu…</p></div>
   </main>
 
   <div class="extra">
@@ -67,20 +68,20 @@
     <section class="cat xsec" id="cat-recensioni" data-cat="recensioni">
       <header class="cat-head reveal">
         <span class="cat-emoji">⭐</span>
-        <h2 class="cat-title">Dicono di Noi</h2>
+        <h2 class="cat-title" data-i18n="reviewsTitle">Dicono di Noi</h2>
         <div class="cat-rule">✦</div>
       </header>
       <div class="rating reveal" id="rating"></div>
       <div class="reviews" id="reviews"></div>
       <div class="xbtns reveal">
-        <a class="btn-gold" id="gReviews" target="_blank" rel="noopener">Leggi tutte su Google</a>
+        <a class="btn-gold" id="gReviews" target="_blank" rel="noopener" data-i18n="readAll">Leggi tutte su Google</a>
       </div>
     </section>
 
     <section class="cat xsec" id="cat-dove-siamo" data-cat="dove-siamo">
       <header class="cat-head reveal">
         <span class="cat-emoji">📍</span>
-        <h2 class="cat-title">Dove Siamo</h2>
+        <h2 class="cat-title" data-i18n="whereTitle">Dove Siamo</h2>
         <div class="cat-rule">✦</div>
       </header>
       <div class="where reveal">
@@ -88,8 +89,8 @@
         <div class="where-body">
           <p class="addr" id="addr"></p>
           <div class="xbtns">
-            <a class="btn-gold" id="directions" target="_blank" rel="noopener">🧭 Indicazioni</a>
-            <a class="btn-ghost" id="call">📞 Chiama</a>
+            <a class="btn-gold" id="directions" target="_blank" rel="noopener" data-i18n="directions">🧭 Indicazioni</a>
+            <a class="btn-ghost" id="call" data-i18n="call">📞 Chiama</a>
           </div>
         </div>
       </div>
@@ -98,9 +99,9 @@
     <section class="cat xsec" id="cat-allergeni" data-cat="allergeni">
       <header class="cat-head reveal">
         <span class="cat-emoji">⚠️</span>
-        <h2 class="cat-title">Allergeni</h2>
+        <h2 class="cat-title" data-i18n="allergensTitle">Allergeni</h2>
         <div class="cat-rule">✦</div>
-        <p class="cat-desc">Per la tua sicurezza, consulta gli allergeni e comunicaci le tue esigenze alimentari. Il personale è a disposizione per ogni informazione.</p>
+        <p class="cat-desc" data-i18n="allergensIntro">Per la tua sicurezza, consulta gli allergeni e comunicaci le tue esigenze alimentari. Il personale è a disposizione per ogni informazione.</p>
       </header>
       <div class="legend reveal" id="legend"></div>
       <div class="allergens-list" id="allergens"></div>
@@ -108,7 +109,7 @@
   </div>
 
   <footer class="foot">
-    <p class="about">La Tana del Lupo è il luogo ideale per chi ama hamburger premium, smash burger, birre di qualità e serate in compagnia.</p>
+    <p class="about" data-i18n="about">La Tana del Lupo è il luogo ideale per chi ama hamburger premium, smash burger, birre di qualità e serate in compagnia.</p>
     <p class="copy">© <span id="yr"></span> La Tana del Lupo</p>
   </footer>
 

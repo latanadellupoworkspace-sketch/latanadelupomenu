@@ -1,5 +1,24 @@
 // Generazione PDF del menu (lato client, con jsPDF) a partire dai dati attuali del database.
 import { TAGS, visibleTags, isFrozen, displayName } from "./firebase.js";
+import { loadEN, localize, tagLabel } from "./i18n.js";
+
+// Testi fissi del PDF in italiano e inglese
+const TXT = {
+  it: {
+    tagline: "Smash Burger  •  Birre Selezionate  •  Panini Gourmet", updated: "Menu aggiornato al ",
+    allergens: "Allergeni: ", frozen: "* Prodotto surgelato", know: "Da sapere", legend: "Legenda",
+    allergensTitle: "Allergeni", where: "Dove siamo", phone: "Tel. ", menu: "MENU",
+    intro: "Per la tua sicurezza comunica al personale allergie e intolleranze. Elenco delle sostanze che provocano allergie o intolleranze (Reg. UE 1169/2011):",
+    google: (r, n) => `Google: ${r} / 5 su ${n} recensioni`, digital: "Menu digitale: ", file: "menu-la-tana-del-lupo"
+  },
+  en: {
+    tagline: "Smash Burgers  •  Selected Beers  •  Gourmet Burgers", updated: "Menu updated on ",
+    allergens: "Allergens: ", frozen: "* Frozen product", know: "Good to know", legend: "Legend",
+    allergensTitle: "Allergens", where: "Find us", phone: "Phone ", menu: "MENU",
+    intro: "For your safety, please tell our staff about any allergies or intolerances. Substances causing allergies or intolerances (EU Reg. 1169/2011):",
+    google: (r, n) => `Google: ${r} / 5 from ${n} reviews`, digital: "Digital menu: ", file: "menu-la-tana-del-lupo-ENGLISH"
+  }
+};
 
 const JSPDF_URL = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
 
@@ -78,8 +97,16 @@ const clean = (s = "") => String(s)
   .replace(/\s+/g, " ").trim();
 const euro = (n) => "€ " + Number(n || 0).toFixed(2).replace(".", ",");
 
-export async function generateMenuPdf({ categories, products, settings = {}, seed, onProgress = () => {} }) {
+export async function generateMenuPdf({ categories, products, settings = {}, seed, lang = "it", onProgress = () => {} }) {
   onProgress("Carico librerie…");
+  const T = TXT[lang] || TXT.it;
+  if (lang === "en") {
+    await loadEN();
+    const loc = localize({ categories, products, notes: settings.notes || seed.notes || [], allergens: seed.allergens || [] }, "en");
+    ({ categories, products } = loc);
+    settings = { ...settings, notes: loc.notes };
+    seed = { ...seed, allergens: loc.allergens };
+  }
   await loadScript(JSPDF_URL);
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: "mm", format: "a4", compress: true });
@@ -146,14 +173,14 @@ export async function generateMenuPdf({ categories, products, settings = {}, see
   doc.setFontSize(38); doc.text("del Lupo", W / 2, 186, { align: "center" });
   ornament(196, 90);
   doc.setFont("helvetica", "bold"); doc.setFontSize(15); doc.setTextColor(247, 231, 198);
-  doc.text("M  E  N  U", W / 2, 210, { align: "center" });
+  doc.text(T.menu.split("").join("  "), W / 2, 210, { align: "center" });
   doc.setFont("helvetica", "normal"); doc.setFontSize(10); doc.setTextColor(207, 180, 140);
-  doc.text("Smash Burger  •  Birre Selezionate  •  Panini Gourmet", W / 2, 220, { align: "center" });
+  doc.text(T.tagline, W / 2, 220, { align: "center" });
   doc.setFontSize(10.5); doc.setTextColor(247, 231, 198);
   doc.text(clean(info.address || ""), W / 2, 252, { align: "center" });
-  if (info.phone) doc.text("Tel. " + clean(info.phone), W / 2, 258, { align: "center" });
+  if (info.phone) doc.text(T.phone + clean(info.phone), W / 2, 258, { align: "center" });
   doc.setFontSize(8); doc.setTextColor(207, 180, 140);
-  doc.text("Menu aggiornato al " + new Date().toLocaleDateString("it-IT"), W / 2, 284, { align: "center" });
+  doc.text(T.updated + new Date().toLocaleDateString(lang === "en" ? "en-GB" : "it-IT"), W / 2, 284, { align: "center" });
 
   // ---------- CATEGORIE ----------
   doc.addPage(); page++; paper(); header(); y = 22;
@@ -186,9 +213,9 @@ export async function generateMenuPdf({ categories, products, settings = {}, see
       const nameL = doc.splitTextToSize(clean(displayName(p)).toUpperCase(), tw);
       doc.setFont("helvetica", "normal"); doc.setFontSize(8.5);
       const descL = p.description ? doc.splitTextToSize(clean(p.description), W - M - tx) : [];
-      const tagTxt = visibleTags(p).map((k) => TAGS[k].label).join(" · ");
+      const tagTxt = visibleTags(p).map((k) => tagLabel(lang, k)).join(" · ");
       const algTxt = (p.allergens || []).map((id) => allergens.find((a) => a.id === id)?.name).filter(Boolean).join(", ");
-      const extra = [tagTxt, algTxt ? "Allergeni: " + algTxt : ""].filter(Boolean);
+      const extra = [tagTxt, algTxt ? T.allergens + algTxt : ""].filter(Boolean);
       const textH = nameL.length * 4.6 + descL.length * 3.7 + extra.length * 3.5;
       const h = Math.max(thumb ? IMG : 0, textH) + 5;
       ensure(h);
@@ -216,13 +243,13 @@ export async function generateMenuPdf({ categories, products, settings = {}, see
       }
       doc.setFont("helvetica", "italic"); doc.setFontSize(7.5);
       if (tagTxt) { doc.setTextColor(...C.gold); doc.text(tagTxt, tx, ty); ty += 3.5; }
-      if (algTxt) { doc.setTextColor(...C.red); doc.text("Allergeni: " + algTxt, tx, ty); ty += 3.5; }
+      if (algTxt) { doc.setTextColor(...C.red); doc.text(T.allergens + algTxt, tx, ty); ty += 3.5; }
       y += h;
     }
     if (items.some(isFrozen)) {
       ensure(6);
       doc.setFont("helvetica", "italic"); doc.setFontSize(7.5); doc.setTextColor(...C.muted);
-      doc.text("* Prodotto surgelato", W - M, y + 1, { align: "right" });
+      doc.text(T.frozen, W - M, y + 1, { align: "right" });
       y += 4;
     }
     y += 4;
@@ -236,24 +263,24 @@ export async function generateMenuPdf({ categories, products, settings = {}, see
   };
 
   if (notes.length) {
-    section("Da sapere");
+    section(T.know);
     doc.setFont("helvetica", "normal"); doc.setFontSize(9.5); doc.setTextColor(...C.ink);
     for (const n of notes) { ensure(6); doc.text("•  " + clean(n), M + 4, y); y += 5.5; }
   }
 
-  section("Legenda");
+  section(T.legend);
   doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(...C.ink);
-  Object.values(TAGS).forEach((t, i) => {
+  Object.entries(TAGS).forEach(([k, t], i) => {
     const col = i % 2, cx = M + 4 + col * (CW / 2);
     if (col === 0) ensure(6);
-    doc.text((t.asterisk ? "*  " : "•  ") + t.label, cx, y);
+    doc.text((t.asterisk ? "*  " : "•  ") + tagLabel(lang, k), cx, y);
     if (col === 1 || i === Object.values(TAGS).length - 1) y += 5.5;
   });
 
   if (allergens.length) {
-    section("Allergeni");
+    section(T.allergensTitle);
     doc.setFont("helvetica", "italic"); doc.setFontSize(8.5); doc.setTextColor(...C.muted);
-    const intro = doc.splitTextToSize("Per la tua sicurezza comunica al personale allergie e intolleranze. Elenco delle sostanze che provocano allergie o intolleranze (Reg. UE 1169/2011):", CW);
+    const intro = doc.splitTextToSize(T.intro, CW);
     doc.text(intro, M, y); y += intro.length * 3.8 + 2;
     allergens.forEach((a, i) => {
       doc.setFont("helvetica", "normal"); doc.setFontSize(7.5);
@@ -267,21 +294,21 @@ export async function generateMenuPdf({ categories, products, settings = {}, see
     });
   }
 
-  section("Dove siamo");
+  section(T.where);
   doc.setFont("helvetica", "normal"); doc.setFontSize(10); doc.setTextColor(...C.ink);
   doc.text(clean(info.address || ""), W / 2, y, { align: "center" }); y += 5.5;
-  if (info.phone) { doc.text("Tel. " + clean(info.phone), W / 2, y, { align: "center" }); y += 5.5; }
+  if (info.phone) { doc.text(T.phone + clean(info.phone), W / 2, y, { align: "center" }); y += 5.5; }
   if (info.googleRating) {
     doc.setTextColor(...C.gold);
-    doc.text(`Google: ${String(info.googleRating).replace(".", ",")} / 5 su ${info.googleCount || ""} recensioni`, W / 2, y, { align: "center" });
+    doc.text(T.google(lang === "en" ? info.googleRating : String(info.googleRating).replace(".", ","), info.googleCount || ""), W / 2, y, { align: "center" });
     y += 5.5;
   }
   doc.setTextColor(...C.muted); doc.setFontSize(8.5);
-  doc.textWithLink("Menu digitale: " + location.host, W / 2 - doc.getTextWidth("Menu digitale: " + location.host) / 2, y, { url: location.origin });
+  doc.textWithLink(T.digital + location.host, W / 2 - doc.getTextWidth(T.digital + location.host) / 2, y, { url: location.origin });
   footer();
 
   const d = new Date();
-  const name = `menu-la-tana-del-lupo-${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}.pdf`;
+  const name = `${T.file}-${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}.pdf`;
   doc.save(name);
   return name;
 }

@@ -7,12 +7,41 @@
   <title>Gestione Menu · La Tana del Lupo</title>
   <meta name="theme-color" content="#1a0905">
   <link rel="icon" href="/img/icon-512.png">
+  <!-- installabile sul tablet: "Aggiungi a schermata Home" -->
+  <link rel="manifest" href="/gestione.webmanifest">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Gestione Lupo">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rye&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
+  <!-- CARICAMENTO / ERRORE (se il browser del tablet è troppo vecchio lo diciamo chiaramente) -->
+  <section id="boot" class="login">
+    <div class="login-card">
+      <img src="/img/hero.webp" alt="" class="login-logo">
+      <h1>La Tana del Lupo</h1>
+      <p class="sub" id="bootMsg">Caricamento…</p>
+    </div>
+  </section>
+  <script nomodule>
+    document.getElementById("bootMsg").innerHTML = "Questo browser è troppo vecchio.<br>Aggiorna <b>Chrome</b> (o Safari) dal Play Store / App Store e riapri la pagina.";
+  </script>
+  <script>
+    // se dopo 12 secondi non è partito nulla, mostriamo cosa fare
+    window.addEventListener("error", function (e) { window.__bootErr = (e && e.message) || "errore"; });
+    setTimeout(function () {
+      if (window.__adminLoaded) return;
+      document.getElementById("bootMsg").innerHTML =
+        "Non riesco ad aprire la pagina.<br><br>1. Controlla che il Wi-Fi funzioni<br>2. Aggiorna <b>Chrome</b> dal Play Store<br>3. Ricarica la pagina<br><br><small style='opacity:.6'>" +
+        (window.__bootErr || "timeout") + "</small>";
+    }, 12000);
+  </script>
+
   <!-- LOGIN -->
   <section id="login" class="login" hidden>
     <form id="loginForm" class="login-card">
@@ -31,7 +60,8 @@
     <header class="top">
       <h1>🐺 Gestione Menu</h1>
       <div class="top-actions">
-        <button id="pdfBtn" class="btn gold sm">📄 PDF</button>
+        <button class="btn gold sm" data-pdf="it">📄 PDF</button>
+        <button class="btn gold sm" data-pdf="en">📄 PDF English</button>
         <a href="/" target="_blank" class="btn ghost sm">Menu ↗</a>
         <button id="logout" class="btn ghost sm">Esci</button>
       </div>
@@ -42,6 +72,7 @@
       <button class="tab" data-tab="categories">Categorie</button>
       <button class="tab" data-tab="notes">Note</button>
       <button class="tab" data-tab="info">Info</button>
+      <button class="tab" data-tab="guide">❓ Guida</button>
     </nav>
 
     <div id="seedBanner" class="banner" hidden>
@@ -91,6 +122,59 @@
         <button class="btn gold" id="saveInfo">Salva info e recensioni</button>
       </div>
     </main>
+    <main class="panel guide" id="tab-guide" hidden>
+      <h2 class="sec-h">❓ Come si fa</h2>
+
+      <details open><summary>➕ Aggiungere un piatto nuovo</summary>
+        <ol>
+          <li>Vai su <b>Prodotti</b> e premi il pulsante dorato <b>+ Prodotto</b>.</li>
+          <li>Premi <b>📷 Carica foto</b> e scatta o scegli la foto (facoltativa).</li>
+          <li>Scrivi <b>Nome</b>, <b>Descrizione</b> (gli ingredienti) e <b>Prezzo</b> (es. 6 oppure 6,50).</li>
+          <li>Scegli la <b>Categoria</b> (es. Dolci).</li>
+          <li>Se serve, tocca le caselle: <b>Surgelato</b> (mette l'asterisco *), <b>Piccante</b>, <b>Allergeni</b>…</li>
+          <li>Premi <b>Salva</b>. Fatto: è subito nel menu online.</li>
+        </ol>
+      </details>
+
+      <details><summary>✏️ Cambiare prezzo, nome o descrizione</summary>
+        <ol><li>Su <b>Prodotti</b> tocca il piatto (puoi cercarlo scrivendo nella barra in alto).</li>
+        <li>Cambia quello che serve e premi <b>Salva</b>.</li></ol>
+      </details>
+
+      <details><summary>🚫 Un piatto è finito per stasera</summary>
+        <ol><li>Tocca il piatto e togli la spunta a <b>Disponibile</b>, poi <b>Salva</b>.</li>
+        <li>Nel menu comparirà con la scritta <b>Esaurito</b>. Domani rimetti la spunta.</li></ol>
+      </details>
+
+      <details><summary>🙈 Togliere un piatto dal menu</summary>
+        <ul><li><b>Per un po'</b>: togli la spunta a <b>Visibile</b> e salva (resta salvato, lo rimetti quando vuoi).</li>
+        <li><b>Per sempre</b>: tocca il piatto e premi il pulsante rosso <b>Elimina</b>.</li></ul>
+      </details>
+
+      <details><summary>🇬🇧 Menu in inglese</summary>
+        <ul><li>I clienti stranieri toccano il pulsante <b>🇬🇧 EN</b> in alto nel menu (se il telefono è in inglese si apre già in inglese).</li>
+        <li>I piatti vecchi sono già tradotti. Per un piatto nuovo apri <b>🇬🇧 Traduzione inglese</b> nella scheda del piatto e scrivi nome e descrizione in inglese. Se lo lasci vuoto, il piatto appare in italiano.</li>
+        <li>Per il <b>menu cartaceo in inglese</b> premi <b>📄 PDF English</b> in alto e stampalo.</li></ul>
+      </details>
+
+      <details><summary>📄 Stampare il menu</summary>
+        <ul><li>Premi <b>📄 PDF</b> (italiano) o <b>📄 PDF English</b>: il file si scarica con il menu aggiornato al momento.</li>
+        <li>Mandalo per email o stampalo direttamente.</li></ul>
+      </details>
+
+      <details><summary>📱 Avere l'icona sul tablet</summary>
+        <ul><li><b>Android (Chrome)</b>: menu con i tre puntini ⋮ in alto a destra → <b>Aggiungi a schermata Home</b>.</li>
+        <li><b>iPad (Safari)</b>: pulsante Condividi ⬆️ → <b>Aggiungi alla schermata Home</b>.</li>
+        <li>Comparirà l'icona del lupo <b>"Gestione Lupo"</b>: la apri come un'app e resti collegata.</li></ul>
+      </details>
+
+      <details><summary>🆘 Non si apre o non salva</summary>
+        <ul><li>Controlla il Wi-Fi e ricarica la pagina.</li>
+        <li>Aggiorna <b>Chrome</b> dal Play Store (sul tablet vecchio è spesso la causa).</li>
+        <li>L'indirizzo giusto è <b>latanadelupomenu.vercel.app/gestione-tana</b>.</li>
+        <li>Se ancora non va, manda a Ivan una foto dello schermo.</li></ul>
+      </details>
+    </main>
   </section>
 
   <!-- MODALE PRODOTTO -->
@@ -111,6 +195,11 @@
         <label>Ordine<input id="pOrder" type="number" step="1"></label>
       </div>
       <label>Categoria<select id="pCat" required></select></label>
+      <details class="en-box">
+        <summary>🇬🇧 Traduzione inglese (facoltativa)</summary>
+        <label>Nome in inglese<input id="pNameEn"></label>
+        <label>Descrizione in inglese<textarea id="pDescEn" rows="2"></textarea></label>
+      </details>
       <p class="mini-h">Caratteristiche</p>
       <div class="chipset" id="pTags"></div>
       <p class="mini-h">Allergeni</p>

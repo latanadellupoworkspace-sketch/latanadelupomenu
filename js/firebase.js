@@ -36,6 +36,17 @@ export const isFrozen = (p) => (p.tags || []).includes("surgelato");
 // Nome con asterisco se surgelato (senza duplicarlo se è già nel nome)
 export const displayName = (p) => (isFrozen(p) && !/\*\s*$/.test(p.name || "") ? `${p.name} *` : p.name || "");
 
+// Prodotti preparati in js/updates.js ma non ancora salvati nel database (vengono salvati al primo login admin):
+// li mostriamo già nel menu, senza duplicare quelli esistenti.
+function withPending(products, applied, { UPDATES = [] } = {}) {
+  const ids = new Set(products.map((p) => p.id));
+  const names = new Set(products.map((p) => (p.name || "").trim().toLowerCase()));
+  const extra = UPDATES.filter((u) => !applied.includes(u.id)).flatMap((u) => u.add || [])
+    .filter((p) => !ids.has(p.id) && !names.has(p.data.name.trim().toLowerCase()))
+    .map((p) => ({ id: p.id, ...p.data }));
+  return products.concat(extra);
+}
+
 export const fetchSeed = () => fetch("/seed.json").then((r) => r.json());
 
 // Carica il menu: prima Firestore, se vuoto/irraggiungibile usa seed.json.
@@ -55,7 +66,8 @@ export async function loadMenu() {
       return {
         source: "firestore",
         categories: cs.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
-        products: ps.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
+        products: withPending(ps.docs.map((d) => ({ id: d.id, ...d.data() })), s.appliedUpdates || [], await import("./updates.js"))
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
         notes: s.notes || [],
         info: { ...seed.info, ...(s.info || {}) },
         reviews: s.reviews || seed.reviews,

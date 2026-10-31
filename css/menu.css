@@ -372,3 +372,13 @@ body {
 /* nota asterisco surgelati, discreta */
 .footnote { margin: 10px 2px 0; font-size: 12px; font-style: italic; color: var(--muted); opacity: .8; text-align: right; }
 .m-tags .footnote { text-align: left; margin-top: 8px; }
+
+/* pulsante lingua */
+.catbar { padding-right: 10px; }
+.lang-btn {
+  flex: none; height: 38px; padding: 0 12px; border-radius: 999px; cursor: pointer;
+  font: 600 13px "Oswald", sans-serif; letter-spacing: .06em; color: #2a0d06;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold)); border: 0;
+  box-shadow: 0 2px 0 #6b3a0c;
+}
+.lang-btn:active { transform: translateY(2px); box-shadow: none; }
